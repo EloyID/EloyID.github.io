@@ -1,0 +1,5750 @@
+{
+  "nodes": [
+    {
+      "id": "a4f0a306",
+      "name": "manage_raw_demand_data",
+      "tags": [
+        "raw_data_extraction_to_db"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "start_date": "2024-01-20",
+        "end_date": "2024-01-31",
+        "database_config": {
+          "database": "energy-market-forecast",
+          "user": "root",
+          "password": "3loy3loy",
+          "host": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "id": "5ce3c820",
+      "name": "params:start_date",
+      "tags": [
+        "raw_data_extraction_to_db",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "a0a9c1db",
+      "name": "params:end_date",
+      "tags": [
+        "raw_data_extraction_to_db",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "1d093338",
+      "name": "params:database_config",
+      "tags": [
+        "intermediate_reporting",
+        "raw_data_extraction_to_db",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "extract_data_to_parquet"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "9dbc0d61",
+      "name": "raw_demand_data",
+      "tags": [
+        "raw_data_extraction_to_db",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "raw",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": {
+        "rows": 312,
+        "columns": 6,
+        "file_size": 13019
+      }
+    },
+    {
+      "id": "40ad06bc",
+      "name": "manage_raw_pbc_data",
+      "tags": [
+        "raw_data_extraction_to_db"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "start_date": "2024-01-20",
+        "end_date": "2024-01-31",
+        "database_config": {
+          "database": "energy-market-forecast",
+          "user": "root",
+          "password": "3loy3loy",
+          "host": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "id": "4bc40f10",
+      "name": "raw_pbc_data",
+      "tags": [
+        "raw_data_extraction_to_db",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "raw",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": {
+        "rows": 1103504,
+        "columns": 8,
+        "file_size": 2276319
+      }
+    },
+    {
+      "id": "8b277c9a",
+      "name": "manage_raw_solar_data",
+      "tags": [
+        "raw_data_extraction_to_db"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "start_date": "2024-01-20",
+        "end_date": "2024-01-31",
+        "database_config": {
+          "database": "energy-market-forecast",
+          "user": "root",
+          "password": "3loy3loy",
+          "host": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "id": "0efd5a48",
+      "name": "raw_solar_data",
+      "tags": [
+        "raw_data_extraction_to_db",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "raw",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": {
+        "rows": 312,
+        "columns": 6,
+        "file_size": 0
+      }
+    },
+    {
+      "id": "c854656d",
+      "name": "manage_raw_wind_data",
+      "tags": [
+        "raw_data_extraction_to_db"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "start_date": "2024-01-20",
+        "end_date": "2024-01-31",
+        "database_config": {
+          "database": "energy-market-forecast",
+          "user": "root",
+          "password": "3loy3loy",
+          "host": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "id": "43cb0013",
+      "name": "raw_wind_data",
+      "tags": [
+        "raw_data_extraction_to_db",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "raw",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": {
+        "rows": 312,
+        "columns": 6,
+        "file_size": 12896
+      }
+    },
+    {
+      "id": "4026776d",
+      "name": "create_daily_infos_table",
+      "tags": [
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "start_date": "2024-01-20",
+        "end_date": "2024-01-31",
+        "optional_explanatory_variables": [
+          "Hora",
+          "Día de la semana",
+          "Predicción eólica",
+          "Predicción demanda"
+        ],
+        "database_config": {
+          "database": "energy-market-forecast",
+          "user": "root",
+          "password": "3loy3loy",
+          "host": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "id": "148ccec0",
+      "name": "params:optional_explanatory_variables",
+      "tags": [
+        "preprocess_input_data",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "e7fea97c",
+      "name": "daily_info",
+      "tags": [
+        "raw_data_to_primary_data",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "34252fd6",
+      "name": "transform_pbc",
+      "tags": [
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "bid_type": "C",
+        "start_date": "2024-01-20",
+        "end_date": "2024-01-31",
+        "min_energy_cumsum": 500,
+        "max_energy_cumsum": 50000,
+        "min_price": 0,
+        "max_price": 200,
+        "optional_explanatory_variables": [
+          "Hora",
+          "Día de la semana",
+          "Predicción eólica",
+          "Predicción demanda"
+        ],
+        "database_config": {
+          "database": "energy-market-forecast",
+          "user": "root",
+          "password": "3loy3loy",
+          "host": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "id": "1f7b3a99",
+      "name": "params:bid_type",
+      "tags": [
+        "train_model",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "ae7c7794",
+      "name": "params:min_energy_cumsum",
+      "tags": [
+        "primary_data_to_input_data",
+        "raw_data_to_primary_data",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "03c06aec",
+      "name": "params:max_energy_cumsum",
+      "tags": [
+        "primary_data_to_input_data",
+        "raw_data_to_primary_data",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "6118ace1",
+      "name": "params:min_price",
+      "tags": [
+        "raw_data_to_primary_data",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "a429a388",
+      "name": "params:max_price",
+      "tags": [
+        "raw_data_to_primary_data",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "5d154f28",
+      "name": "featured_merged_input_data",
+      "tags": [
+        "intermediate_reporting",
+        "raw_data_to_primary_data",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": {
+        "rows": 155134,
+        "columns": 7,
+        "file_size": 1050600
+      }
+    },
+    {
+      "id": "ff3a89aa",
+      "name": "featured_price_merged_input_data",
+      "tags": [
+        "intermediate_reporting",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": {
+        "rows": 66473,
+        "columns": 7,
+        "file_size": 508989
+      }
+    },
+    {
+      "id": "90ae7fbf",
+      "name": "params_reporting",
+      "tags": [
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "tracking.json_dataset.JSONDataset",
+      "stats": null
+    },
+    {
+      "id": "e1b67e63",
+      "name": "create_batched_input_data_table",
+      "tags": [
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "start_date": "2024-01-20",
+        "end_date": "2024-01-31",
+        "bid_type": "C",
+        "batch_size": 100,
+        "min_energy_cumsum": 500,
+        "max_energy_cumsum": 50000,
+        "database_config": {
+          "database": "energy-market-forecast",
+          "user": "root",
+          "password": "3loy3loy",
+          "host": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "id": "06633a34",
+      "name": "params:batch_size",
+      "tags": [
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "e6597142",
+      "name": "batches",
+      "tags": [
+        "primary_data_to_input_data",
+        "fit_pca",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "2cbe20e3",
+      "name": "batched_input_data",
+      "tags": [
+        "raw_data_to_primary_data",
+        "train_test_split",
+        "intermediate_reporting",
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "b810f679",
+      "name": "create_batched_price_input_data_table",
+      "tags": [
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "start_date": "2024-01-20",
+        "end_date": "2024-01-31",
+        "bid_type": "C",
+        "price_batch_size": 5,
+        "min_price": 0,
+        "max_price": 200,
+        "database_config": {
+          "database": "energy-market-forecast",
+          "user": "root",
+          "password": "3loy3loy",
+          "host": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "id": "2bf5697d",
+      "name": "params:price_batch_size",
+      "tags": [
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "ab547816",
+      "name": "price_batches",
+      "tags": [
+        "primary_data_to_input_data",
+        "fit_pca",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "9891faec",
+      "name": "batched_price_input_data",
+      "tags": [
+        "raw_data_to_primary_data",
+        "train_test_split",
+        "intermediate_reporting",
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "28ff800b",
+      "name": "end_of_data_extraction",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {}
+    },
+    {
+      "id": "c70353ff",
+      "name": "featured_merged_input_data_plots",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "66f14d4a",
+      "name": "split_datasets",
+      "tags": [
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "min_energy_cumsum_eval": 5000,
+        "max_energy_cumsum_eval": 30000
+      }
+    },
+    {
+      "id": "90805783",
+      "name": "params:min_energy_cumsum_eval",
+      "tags": [
+        "model_reporting",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained",
+        "xgboost_monotonic",
+        "pca_target_regression"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "4fc42db9",
+      "name": "params:max_energy_cumsum_eval",
+      "tags": [
+        "model_reporting",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained",
+        "xgboost_monotonic",
+        "pca_target_regression"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "3a82a887",
+      "name": "train_dates",
+      "tags": [
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "eaf2f18b",
+      "name": "test_dates",
+      "tags": [
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "516d701e",
+      "name": "train_merged_input_data",
+      "tags": [
+        "primary_data_to_input_data",
+        "preprocess_input_data",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary_train_test_split",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "3eda7b8e",
+      "name": "test_merged_input_data",
+      "tags": [
+        "primary_data_to_input_data",
+        "preprocess_input_data",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary_train_test_split",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "7ee470ac",
+      "name": "train_daily_info",
+      "tags": [
+        "primary_data_to_input_data",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary_train_test_split",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "e3aee374",
+      "name": "test_daily_info",
+      "tags": [
+        "primary_data_to_input_data",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary_train_test_split",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "8a223d47",
+      "name": "create_batched_input_data_table_plot",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {}
+    },
+    {
+      "id": "69f8e2f3",
+      "name": "create_batched_input_data_table_plots",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "a14427fe",
+      "name": "create_batched_price_input_data_table_plot",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {}
+    },
+    {
+      "id": "afda907c",
+      "name": "create_batched_price_input_data_table_plots",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "bf0a7cea",
+      "name": "preprocess_merged_input_data",
+      "tags": [
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "optional_explanatory_variables": [
+          "Hora",
+          "Día de la semana",
+          "Predicción eólica",
+          "Predicción demanda"
+        ]
+      }
+    },
+    {
+      "id": "082a5865",
+      "name": "X_train_merged_input_data",
+      "tags": [
+        "model_reporting",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "3b90af80",
+      "name": "y_train_merged_input_data",
+      "tags": [
+        "train_model",
+        "model_reporting",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "2e8cef9a",
+      "name": "X_test_merged_input_data",
+      "tags": [
+        "model_reporting",
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "2b8928dc",
+      "name": "y_test_merged_input_data",
+      "tags": [
+        "model_reporting",
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "b920f4ee",
+      "name": "X_train_merged_input_data_preprocessed",
+      "tags": [
+        "train_model",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "6de15ba3",
+      "name": "X_test_merged_input_data_preprocessed",
+      "tags": [
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "bf783755",
+      "name": "column_transformer_merged_input_data",
+      "tags": [
+        "train_model",
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "03bdfd27",
+      "name": "split_pca_datasets",
+      "tags": [
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "min_energy_cumsum": 500,
+        "max_energy_cumsum": 50000
+      }
+    },
+    {
+      "id": "47734221",
+      "name": "batched_raw_train_dataset",
+      "tags": [
+        "fit_pca",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary_train_test_split",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "6fadb36e",
+      "name": "batched_raw_test_dataset",
+      "tags": [
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary_train_test_split",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "1e8920cd",
+      "name": "split_price_pca_datasets",
+      "tags": [
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "min_price": 0,
+        "max_price": 200
+      }
+    },
+    {
+      "id": "88d21994",
+      "name": "batched_price_raw_train_dataset",
+      "tags": [
+        "train_model",
+        "fit_pca",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary_train_test_split",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "d2801c3d",
+      "name": "batched_price_raw_test_dataset",
+      "tags": [
+        "train_test_split",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "primary_train_test_split",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "f6442adf",
+      "name": "data_pca",
+      "tags": [
+        "fit_pca"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {}
+    },
+    {
+      "id": "c04a5ed2",
+      "name": "fitted_fpca",
+      "tags": [
+        "train_model",
+        "fit_pca",
+        "test_model",
+        "intermediate_reporting",
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "63414db8",
+      "name": "data_pca_plot",
+      "tags": [
+        "fit_pca"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "2a919aef",
+      "name": "price_data_pca",
+      "tags": [
+        "fit_pca"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {}
+    },
+    {
+      "id": "f614a281",
+      "name": "fitted_price_fpca",
+      "tags": [
+        "train_model",
+        "fit_pca",
+        "test_model",
+        "intermediate_reporting",
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "305e1de2",
+      "name": "data_price_pca_plot",
+      "tags": [
+        "fit_pca"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "342c4953",
+      "name": "train_xgboost_monotonic",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "parameters": {
+        "bid_type": "C",
+        "hyper_parameters_optimizer": "HalvingGridSearchCV"
+      }
+    },
+    {
+      "id": "9ddbfd88",
+      "name": "params:hyper_parameters_optimizer",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "b4db3f8c",
+      "name": "xgboost_monotonic.trained_xgboost_monotonic",
+      "tags": [
+        "train_model",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "8f969404",
+      "name": "xgboost_monotonic.y_train_merged_input_data_predicted",
+      "tags": [
+        "train_model",
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "662bc123",
+      "name": "xgboost_monotonic.train_dataset_metrics",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "6481a513",
+      "name": "train_xgboost_unconstrained",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "parameters": {
+        "hyper_parameters_optimizer": "HalvingGridSearchCV"
+      }
+    },
+    {
+      "id": "cb2641d2",
+      "name": "xgboost_unconstrained.trained_xgboost_unconstrained",
+      "tags": [
+        "train_model",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "e2a443ea",
+      "name": "xgboost_unconstrained.y_train_xgboost_unconstrained_predicted",
+      "tags": [
+        "train_model",
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "9563680a",
+      "name": "xgboost_unconstrained.train_dataset_metrics#outputs",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "85d1a401",
+      "name": "build_batched_energy_pca_as_target_dataset",
+      "tags": [
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "lags": [
+          {
+            "d": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ab4ddd70",
+      "name": "params:lags",
+      "tags": [
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "c110eafe",
+      "name": "X_train_batched_energy_pca_as_target_dataset",
+      "tags": [
+        "train_model",
+        "preprocess_input_data",
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "5c83f7b8",
+      "name": "y_train_batched_energy_pca_as_target_dataset",
+      "tags": [
+        "train_model",
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "8073b9cd",
+      "name": "X_test_batched_energy_pca_as_target_dataset",
+      "tags": [
+        "preprocess_input_data",
+        "primary_data_to_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "eac21cce",
+      "name": "y_test_batched_energy_pca_as_target_dataset",
+      "tags": [
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "8978f441",
+      "name": "build_batched_price_pca_as_target_dataset",
+      "tags": [
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "lags": [
+          {
+            "d": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "1135c720",
+      "name": "X_train_batched_price_pca_as_target_dataset",
+      "tags": [
+        "train_model",
+        "preprocess_input_data",
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "d80632a9",
+      "name": "y_train_batched_price_pca_as_target_dataset",
+      "tags": [
+        "train_model",
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "07eed1a0",
+      "name": "X_test_batched_price_pca_as_target_dataset",
+      "tags": [
+        "preprocess_input_data",
+        "primary_data_to_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "bcc0e571",
+      "name": "y_test_batched_price_pca_as_target_dataset",
+      "tags": [
+        "primary_data_to_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "e73e9b25",
+      "name": "build_pca_dataset",
+      "tags": [
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "min_energy_cumsum": 500,
+        "max_energy_cumsum": 50000,
+        "lags": [
+          {
+            "d": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "9ba21ec2",
+      "name": "X_train_dataset",
+      "tags": [
+        "train_model",
+        "primary_data_to_input_data",
+        "model_reporting",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "99186c21",
+      "name": "y_train_dataset",
+      "tags": [
+        "train_model",
+        "model_reporting",
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "11c6b33b",
+      "name": "X_test_dataset",
+      "tags": [
+        "primary_data_to_input_data",
+        "test_model",
+        "model_reporting",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "d26f904e",
+      "name": "y_test_dataset",
+      "tags": [
+        "model_reporting",
+        "primary_data_to_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "c92d4b73",
+      "name": "build_price_pca_dataset",
+      "tags": [
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "lags": [
+          {
+            "d": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "466a749a",
+      "name": "X_train_price_pca_dataset",
+      "tags": [
+        "train_model",
+        "primary_data_to_input_data",
+        "model_reporting",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "1cb512ce",
+      "name": "y_train_price_pca_dataset",
+      "tags": [
+        "train_model",
+        "model_reporting",
+        "primary_data_to_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "b6841e99",
+      "name": "X_test_price_pca_dataset",
+      "tags": [
+        "primary_data_to_input_data",
+        "test_model",
+        "model_reporting",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "12e4b570",
+      "name": "y_test_price_pca_dataset",
+      "tags": [
+        "model_reporting",
+        "primary_data_to_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "749a9361",
+      "name": "pca_components_reporting",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {}
+    },
+    {
+      "id": "9d603039",
+      "name": "pca_components_reporting_plot",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "94d0acd7",
+      "name": "price_pca_components_reporting",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {}
+    },
+    {
+      "id": "6ca5b0c1",
+      "name": "price_pca_components_reporting_plot",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "e0b98d8a",
+      "name": "test_xgboost_monotonic",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "0d07ade9",
+      "name": "xgboost_monotonic.y_test_merged_input_data_predicted",
+      "tags": [
+        "model_reporting",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "4e4a93e4",
+      "name": "xgboost_monotonic.test_dataset_metrics",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "d652089e",
+      "name": "test_xgboost_unconstrained",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "7e106842",
+      "name": "xgboost_unconstrained.y_test_xgboost_unconstrained_predicted",
+      "tags": [
+        "model_reporting",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "fee318a7",
+      "name": "xgboost_unconstrained.test_dataset_metrics",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "a14e4729",
+      "name": "preprocess_batched_energy_pca_as_target_dataset",
+      "tags": [
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "optional_explanatory_variables": [
+          "Hora",
+          "Día de la semana",
+          "Predicción eólica",
+          "Predicción demanda"
+        ]
+      }
+    },
+    {
+      "id": "a6394e1c",
+      "name": "X_train_batched_energy_pca_as_target_dataset_preprocessed",
+      "tags": [
+        "train_model",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "35966bfb",
+      "name": "X_test_batched_energy_pca_as_target_dataset_preprocessed",
+      "tags": [
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "f270ef3c",
+      "name": "column_transformer_batched_energy_pca_as_target_dataset",
+      "tags": [
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "20918d63",
+      "name": "preprocess_batched_price_pca_as_target_dataset",
+      "tags": [
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "optional_explanatory_variables": [
+          "Hora",
+          "Día de la semana",
+          "Predicción eólica",
+          "Predicción demanda"
+        ]
+      }
+    },
+    {
+      "id": "92928a06",
+      "name": "X_train_batched_price_pca_as_target_dataset_preprocessed",
+      "tags": [
+        "train_model",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "1283f626",
+      "name": "X_test_batched_price_pca_as_target_dataset_preprocessed",
+      "tags": [
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "1003e99b",
+      "name": "column_transformer_batched_price_pca_as_target_dataset",
+      "tags": [
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "6640c626",
+      "name": "preprocess_pca_dataset",
+      "tags": [
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "optional_explanatory_variables": [
+          "Hora",
+          "Día de la semana",
+          "Predicción eólica",
+          "Predicción demanda"
+        ]
+      }
+    },
+    {
+      "id": "81bbf0d4",
+      "name": "X_train_dataset_preprocessed",
+      "tags": [
+        "train_model",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "0e6d52a9",
+      "name": "X_test_dataset_preprocessed",
+      "tags": [
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "a436d51b",
+      "name": "column_transformer_pca_dataset",
+      "tags": [
+        "train_model",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "305e3a2a",
+      "name": "preprocess_price_pca_dataset",
+      "tags": [
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "optional_explanatory_variables": [
+          "Hora",
+          "Día de la semana",
+          "Predicción eólica",
+          "Predicción demanda"
+        ]
+      }
+    },
+    {
+      "id": "76c406ca",
+      "name": "X_train_price_pca_dataset_preprocessed",
+      "tags": [
+        "train_model",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "dd59380e",
+      "name": "X_test_price_pca_dataset_preprocessed",
+      "tags": [
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "6ff74f19",
+      "name": "column_transformer_price_pca_dataset",
+      "tags": [
+        "train_model",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "eacecf41",
+      "name": "xgboost_monotonic_reporting",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "parameters": {
+        "min_energy_cumsum_eval": 5000,
+        "max_energy_cumsum_eval": 30000
+      }
+    },
+    {
+      "id": "450966cb",
+      "name": "xgboost_monotonic_reporting_plots",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "a877d89b",
+      "name": "xgboost_unconstrained_reporting",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "parameters": {
+        "min_energy_cumsum_eval": 5000,
+        "max_energy_cumsum_eval": 30000
+      }
+    },
+    {
+      "id": "cb3dee3d",
+      "name": "xgboost_unconstrained_reporting_plots",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "f2c6b827",
+      "name": "train_pca_target_regression",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "pca_target_regression"
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "acd22615",
+      "name": "pca_target_regression.trained_pca_target_regression",
+      "tags": [
+        "train_model",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "pca_target_regression"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "5f7da03a",
+      "name": "pca_target_regression.y_train_pca_target_regression_dataset_predicted",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "pca_target_regression"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "cb7b0925",
+      "name": "pca_target_regression.y_train_pca_target_regression_dataset_predicted_reconstructed",
+      "tags": [
+        "train_model",
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "pca_target_regression"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "f3dd0aa7",
+      "name": "pca_target_regression.train_dataset_metrics",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "pca_target_regression"
+      ],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "a2a5a037",
+      "name": "train_price_pca_target_regression",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "price_pca_target_regression"
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "e80d908f",
+      "name": "price_pca_target_regression.trained_price_pca_target_regression",
+      "tags": [
+        "train_model",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "price_pca_target_regression"
+      ],
+      "layer": "models",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "024e8bb6",
+      "name": "price_pca_target_regression.y_train_price_pca_target_regression_dataset_predicted",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "price_pca_target_regression"
+      ],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "029c45aa",
+      "name": "price_pca_target_regression.y_train_price_pca_target_regression_dataset_predicted_reconstructed",
+      "tags": [
+        "train_model",
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "price_pca_target_regression"
+      ],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "6a7b7b21",
+      "name": "price_pca_target_regression.train_dataset_metrics",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "price_pca_target_regression"
+      ],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "7688e04a",
+      "name": "train_xgboost_batched_energy_pca_as_target",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "hyper_parameters_optimizer": "HalvingGridSearchCV"
+      }
+    },
+    {
+      "id": "b7e20cd6",
+      "name": "trained_xgboost_batched_energy_pca_as_target",
+      "tags": [
+        "train_model",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "2091faeb",
+      "name": "y_train_batched_energy_pca_as_target_dataset_predicted",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "ec62358c",
+      "name": "y_train_batched_energy_pca_as_target_dataset_predicted_reconstructed",
+      "tags": [
+        "train_model",
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "ff20b49a",
+      "name": "xgboost_batched_energy_pca_as_target_train_dataset_metrics",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "57a34d1d",
+      "name": "train_xgboost_pca_monotonic",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "bid_type": "C",
+        "hyper_parameters_optimizer": "HalvingGridSearchCV"
+      }
+    },
+    {
+      "id": "fe68af51",
+      "name": "trained_xgboost_pca_monotonic",
+      "tags": [
+        "train_model",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "d8dce851",
+      "name": "y_train_dataset_predicted",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "8de74b14",
+      "name": "xgboost_pca_monotonic_train_dataset_metrics",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "2939294f",
+      "name": "train_xgboost_price_pca_monotonic",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "bid_type": "C",
+        "hyper_parameters_optimizer": "HalvingGridSearchCV"
+      }
+    },
+    {
+      "id": "0ee6bc41",
+      "name": "trained_xgboost_price_pca_monotonic",
+      "tags": [
+        "train_model",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "9adf90c4",
+      "name": "y_train_price_pca_dataset_predicted",
+      "tags": [
+        "train_model",
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "9271d9b3",
+      "name": "xgboost_price_pca_monotonic_train_dataset_metrics",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "837ae464",
+      "name": "test_pca_target_regression",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "pca_target_regression"
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "158b5fd2",
+      "name": "pca_target_regression.y_test_pca_target_regression_dataset_predicted",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "pca_target_regression"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "729ec91b",
+      "name": "pca_target_regression.y_test_pca_target_regression_dataset_predicted_reconstructed",
+      "tags": [
+        "model_reporting",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "pca_target_regression"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "0e090640",
+      "name": "pca_target_regression.test_dataset_metrics",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "pca_target_regression"
+      ],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "cfcd10a8",
+      "name": "test_price_pca_target_regression",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "price_pca_target_regression"
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "6a3dcfd2",
+      "name": "price_pca_target_regression.y_test_price_pca_target_regression_dataset_predicted",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "price_pca_target_regression"
+      ],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "0ed304e0",
+      "name": "price_pca_target_regression.y_test_price_pca_target_regression_dataset_predicted_reconstructed",
+      "tags": [
+        "model_reporting",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "price_pca_target_regression"
+      ],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "7d74cf6a",
+      "name": "price_pca_target_regression.test_dataset_metrics",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "price_pca_target_regression"
+      ],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "d06c6f11",
+      "name": "test_xgboost_batched_energy_pca_as_target",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {}
+    },
+    {
+      "id": "2af71aa9",
+      "name": "y_test_batched_energy_pca_as_target_dataset_predicted",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "b6decd2a",
+      "name": "y_test_batched_energy_pca_as_target_dataset_predicted_reconstructed",
+      "tags": [
+        "model_reporting",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "59524fc6",
+      "name": "xgboost_batched_energy_pca_as_target_test_dataset_metrics",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "f32191bb",
+      "name": "test_xgboost_pca_monotonic",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {}
+    },
+    {
+      "id": "17050095",
+      "name": "y_test_dataset_predicted",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "659e4568",
+      "name": "xgboost_pca_monotonic_test_dataset_metrics",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "5f299d64",
+      "name": "test_xgboost_price_pca_monotonic",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {}
+    },
+    {
+      "id": "1985ba29",
+      "name": "y_test_price_pca_dataset_predicted",
+      "tags": [
+        "model_reporting",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "model_output",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "0411977b",
+      "name": "xgboost_price_pca_monotonic_test_dataset_metrics",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "ed3e8cf3",
+      "name": "pca_target_regression_reporting",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "pca_target_regression"
+      ],
+      "parameters": {
+        "min_energy_cumsum_eval": 5000,
+        "max_energy_cumsum_eval": 30000
+      }
+    },
+    {
+      "id": "e0f37777",
+      "name": "pca_target_regression_reporting_plots",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "pca_target_regression"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "1db381c2",
+      "name": "price_pca_target_regression_reporting",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "price_pca_target_regression"
+      ],
+      "parameters": {
+        "min_price_eval": 0,
+        "max_price_eval": 200
+      }
+    },
+    {
+      "id": "6bbf3f76",
+      "name": "params:min_price_eval",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "6abc0f31",
+      "name": "params:max_price_eval",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "5c551c9e",
+      "name": "price_pca_target_regression_reporting_plots",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "price_pca_target_regression_pipeline"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "2620f1d0",
+      "name": "xgboost_batched_energy_pca_as_target_reporting",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "min_energy_cumsum_eval": 5000,
+        "max_energy_cumsum_eval": 30000
+      }
+    },
+    {
+      "id": "67f511f8",
+      "name": "xgboost_batched_energy_pca_as_target_reporting_plots",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "51f33c86",
+      "name": "xgboost_monotonic_pca_reporting",
+      "tags": [],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "min_energy_cumsum_eval": 5000,
+        "max_energy_cumsum_eval": 30000
+      }
+    },
+    {
+      "id": "bbd84cf3",
+      "name": "xgboost_monotonic_pca_reporting_plots",
+      "tags": [],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "64ea11cf",
+      "name": "xgboost_monotonic_price_pca_reporting",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "min_price_eval": 0,
+        "max_price_eval": 200
+      }
+    },
+    {
+      "id": "c4a1d860",
+      "name": "xgboost_monotonic_price_pca_reporting_plots",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "pca_target_regression",
+      "name": "pca_target_regression",
+      "tags": [],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "modularPipeline",
+      "modular_pipelines": null,
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "price_pca_target_regression",
+      "name": "price_pca_target_regression",
+      "tags": [],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "modularPipeline",
+      "modular_pipelines": null,
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "xgboost_monotonic",
+      "name": "xgboost_monotonic",
+      "tags": [],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "modularPipeline",
+      "modular_pipelines": null,
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "xgboost_unconstrained",
+      "name": "xgboost_unconstrained",
+      "tags": [],
+      "pipelines": [
+        "__default__"
+      ],
+      "type": "modularPipeline",
+      "modular_pipelines": null,
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "f6442adf",
+      "target": "c04a5ed2"
+    },
+    {
+      "source": "99186c21",
+      "target": "51f33c86"
+    },
+    {
+      "source": "bf783755",
+      "target": "e0b98d8a"
+    },
+    {
+      "source": "1d093338",
+      "target": "e1b67e63"
+    },
+    {
+      "source": "9891faec",
+      "target": "1e8920cd"
+    },
+    {
+      "source": "1f7b3a99",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "03c06aec",
+      "target": "34252fd6"
+    },
+    {
+      "source": "3b90af80",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "c04a5ed2",
+      "target": "f2c6b827"
+    },
+    {
+      "source": "082a5865",
+      "target": "a877d89b"
+    },
+    {
+      "source": "c92d4b73",
+      "target": "1cb512ce"
+    },
+    {
+      "source": "90805783",
+      "target": "2620f1d0"
+    },
+    {
+      "source": "pca_target_regression",
+      "target": "158b5fd2"
+    },
+    {
+      "source": "0ed304e0",
+      "target": "1db381c2"
+    },
+    {
+      "source": "66f14d4a",
+      "target": "eaf2f18b"
+    },
+    {
+      "source": "6640c626",
+      "target": "81bbf0d4"
+    },
+    {
+      "source": "5c83f7b8",
+      "target": "7688e04a"
+    },
+    {
+      "source": "9ba21ec2",
+      "target": "ed3e8cf3"
+    },
+    {
+      "source": "e73e9b25",
+      "target": "99186c21"
+    },
+    {
+      "source": "e6597142",
+      "target": "f6442adf"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "e0b98d8a"
+    },
+    {
+      "source": "5f299d64",
+      "target": "1985ba29"
+    },
+    {
+      "source": "9ddbfd88",
+      "target": "7688e04a"
+    },
+    {
+      "source": "bf783755",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "b6decd2a",
+      "target": "2620f1d0"
+    },
+    {
+      "source": "c854656d",
+      "target": "43cb0013"
+    },
+    {
+      "source": "90805783",
+      "target": "51f33c86"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "a877d89b"
+    },
+    {
+      "source": "3b90af80",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "8a223d47",
+      "target": "69f8e2f3"
+    },
+    {
+      "source": "43cb0013",
+      "target": "34252fd6"
+    },
+    {
+      "source": "28ff800b",
+      "target": "c70353ff"
+    },
+    {
+      "source": "b920f4ee",
+      "target": "342c4953"
+    },
+    {
+      "source": "d2801c3d",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "6abc0f31",
+      "target": "64ea11cf"
+    },
+    {
+      "source": "88d21994",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "2939294f",
+      "target": "0ee6bc41"
+    },
+    {
+      "source": "8978f441",
+      "target": "1135c720"
+    },
+    {
+      "source": "3eda7b8e",
+      "target": "e73e9b25"
+    },
+    {
+      "source": "9ba21ec2",
+      "target": "7688e04a"
+    },
+    {
+      "source": "f2c6b827",
+      "target": "5f7da03a"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "9891faec",
+      "target": "c92d4b73"
+    },
+    {
+      "source": "466a749a",
+      "target": "305e3a2a"
+    },
+    {
+      "source": "64ea11cf",
+      "target": "c4a1d860"
+    },
+    {
+      "source": "bf783755",
+      "target": "342c4953"
+    },
+    {
+      "source": "3b90af80",
+      "target": "342c4953"
+    },
+    {
+      "source": "029c45aa",
+      "target": "1db381c2"
+    },
+    {
+      "source": "305e3a2a",
+      "target": "6ff74f19"
+    },
+    {
+      "source": "03c06aec",
+      "target": "e1b67e63"
+    },
+    {
+      "source": "2a919aef",
+      "target": "f614a281"
+    },
+    {
+      "source": "f614a281",
+      "target": "c92d4b73"
+    },
+    {
+      "source": "e2a443ea",
+      "target": "a877d89b"
+    },
+    {
+      "source": "1d093338",
+      "target": "8b277c9a"
+    },
+    {
+      "source": "5ce3c820",
+      "target": "c854656d"
+    },
+    {
+      "source": "99186c21",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "b6841e99",
+      "target": "1db381c2"
+    },
+    {
+      "source": "20918d63",
+      "target": "1283f626"
+    },
+    {
+      "source": "a0a9c1db",
+      "target": "b810f679"
+    },
+    {
+      "source": "082a5865",
+      "target": "eacecf41"
+    },
+    {
+      "source": "1cb512ce",
+      "target": "1db381c2"
+    },
+    {
+      "source": "9ddbfd88",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "3eda7b8e",
+      "target": "bf0a7cea"
+    },
+    {
+      "source": "d652089e",
+      "target": "fee318a7"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "a877d89b"
+    },
+    {
+      "source": "price_pca_target_regression",
+      "target": "5c551c9e"
+    },
+    {
+      "source": "a0a9c1db",
+      "target": "34252fd6"
+    },
+    {
+      "source": "85d1a401",
+      "target": "c110eafe"
+    },
+    {
+      "source": "a6394e1c",
+      "target": "f2c6b827"
+    },
+    {
+      "source": "c04a5ed2",
+      "target": "837ae464"
+    },
+    {
+      "source": "43cb0013",
+      "target": "4026776d"
+    },
+    {
+      "source": "90805783",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "2cbe20e3",
+      "target": "03bdfd27"
+    },
+    {
+      "source": "7688e04a",
+      "target": "2091faeb"
+    },
+    {
+      "source": "03bdfd27",
+      "target": "6fadb36e"
+    },
+    {
+      "source": "88d21994",
+      "target": "2a919aef"
+    },
+    {
+      "source": "07eed1a0",
+      "target": "cfcd10a8"
+    },
+    {
+      "source": "0efd5a48",
+      "target": "34252fd6"
+    },
+    {
+      "source": "a14e4729",
+      "target": "a6394e1c"
+    },
+    {
+      "source": "9ddbfd88",
+      "target": "342c4953"
+    },
+    {
+      "source": "082a5865",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "cfcd10a8",
+      "target": "6a3dcfd2"
+    },
+    {
+      "source": "7e106842",
+      "target": "a877d89b"
+    },
+    {
+      "source": "0ee6bc41",
+      "target": "5f299d64"
+    },
+    {
+      "source": "12e4b570",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "4bc40f10",
+      "target": "34252fd6"
+    },
+    {
+      "source": "pca_target_regression",
+      "target": "f3dd0aa7"
+    },
+    {
+      "source": "xgboost_monotonic",
+      "target": "450966cb"
+    },
+    {
+      "source": "3b90af80",
+      "target": "a877d89b"
+    },
+    {
+      "source": "34252fd6",
+      "target": "90ae7fbf"
+    },
+    {
+      "source": "8073b9cd",
+      "target": "837ae464"
+    },
+    {
+      "source": "b4db3f8c",
+      "target": "e0b98d8a"
+    },
+    {
+      "source": "d26f904e",
+      "target": "837ae464"
+    },
+    {
+      "source": "1e8920cd",
+      "target": "d2801c3d"
+    },
+    {
+      "source": "6118ace1",
+      "target": "b810f679"
+    },
+    {
+      "source": "5ce3c820",
+      "target": "40ad06bc"
+    },
+    {
+      "source": "1cb512ce",
+      "target": "64ea11cf"
+    },
+    {
+      "source": "94d0acd7",
+      "target": "6ca5b0c1"
+    },
+    {
+      "source": "92928a06",
+      "target": "a2a5a037"
+    },
+    {
+      "source": "6ff74f19",
+      "target": "2939294f"
+    },
+    {
+      "source": "price_pca_target_regression",
+      "target": "6a7b7b21"
+    },
+    {
+      "source": "516d701e",
+      "target": "bf0a7cea"
+    },
+    {
+      "source": "a0a9c1db",
+      "target": "e1b67e63"
+    },
+    {
+      "source": "d80632a9",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "a0a9c1db",
+      "target": "4026776d"
+    },
+    {
+      "source": "6bbf3f76",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "99186c21",
+      "target": "ed3e8cf3"
+    },
+    {
+      "source": "1d093338",
+      "target": "34252fd6"
+    },
+    {
+      "source": "0efd5a48",
+      "target": "4026776d"
+    },
+    {
+      "source": "8978f441",
+      "target": "d80632a9"
+    },
+    {
+      "source": "148ccec0",
+      "target": "bf0a7cea"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "66f14d4a"
+    },
+    {
+      "source": "9ba21ec2",
+      "target": "f2c6b827"
+    },
+    {
+      "source": "a4f0a306",
+      "target": "9dbc0d61"
+    },
+    {
+      "source": "1f7b3a99",
+      "target": "57a34d1d"
+    },
+    {
+      "source": "20918d63",
+      "target": "92928a06"
+    },
+    {
+      "source": "f2c6b827",
+      "target": "f3dd0aa7"
+    },
+    {
+      "source": "466a749a",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "b920f4ee",
+      "target": "6481a513"
+    },
+    {
+      "source": "price_pca_target_regression",
+      "target": "6a3dcfd2"
+    },
+    {
+      "source": "d06c6f11",
+      "target": "b6decd2a"
+    },
+    {
+      "source": "11c6b33b",
+      "target": "d06c6f11"
+    },
+    {
+      "source": "f32191bb",
+      "target": "17050095"
+    },
+    {
+      "source": "ae7c7794",
+      "target": "e73e9b25"
+    },
+    {
+      "source": "9ddbfd88",
+      "target": "2939294f"
+    },
+    {
+      "source": "34252fd6",
+      "target": "ff3a89aa"
+    },
+    {
+      "source": "a6394e1c",
+      "target": "7688e04a"
+    },
+    {
+      "source": "90805783",
+      "target": "ed3e8cf3"
+    },
+    {
+      "source": "ff3a89aa",
+      "target": "a14427fe"
+    },
+    {
+      "source": "c92d4b73",
+      "target": "466a749a"
+    },
+    {
+      "source": "148ccec0",
+      "target": "6640c626"
+    },
+    {
+      "source": "76c406ca",
+      "target": "2939294f"
+    },
+    {
+      "source": "5ce3c820",
+      "target": "a4f0a306"
+    },
+    {
+      "source": "bf0a7cea",
+      "target": "bf783755"
+    },
+    {
+      "source": "3b90af80",
+      "target": "6481a513"
+    },
+    {
+      "source": "c04a5ed2",
+      "target": "e73e9b25"
+    },
+    {
+      "source": "d2801c3d",
+      "target": "cfcd10a8"
+    },
+    {
+      "source": "6abc0f31",
+      "target": "1db381c2"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "2620f1d0"
+    },
+    {
+      "source": "bf783755",
+      "target": "d652089e"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "eacecf41"
+    },
+    {
+      "source": "a0a9c1db",
+      "target": "8b277c9a"
+    },
+    {
+      "source": "a2a5a037",
+      "target": "029c45aa"
+    },
+    {
+      "source": "eaf2f18b",
+      "target": "03bdfd27"
+    },
+    {
+      "source": "bf783755",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "305e3a2a",
+      "target": "dd59380e"
+    },
+    {
+      "source": "1d093338",
+      "target": "4026776d"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "51f33c86"
+    },
+    {
+      "source": "66f14d4a",
+      "target": "7ee470ac"
+    },
+    {
+      "source": "47734221",
+      "target": "f6442adf"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "d652089e"
+    },
+    {
+      "source": "d8dce851",
+      "target": "51f33c86"
+    },
+    {
+      "source": "d652089e",
+      "target": "7e106842"
+    },
+    {
+      "source": "d06c6f11",
+      "target": "59524fc6"
+    },
+    {
+      "source": "1985ba29",
+      "target": "64ea11cf"
+    },
+    {
+      "source": "9891faec",
+      "target": "8978f441"
+    },
+    {
+      "source": "12e4b570",
+      "target": "64ea11cf"
+    },
+    {
+      "source": "20918d63",
+      "target": "1003e99b"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "88d21994",
+      "target": "a2a5a037"
+    },
+    {
+      "source": "ab4ddd70",
+      "target": "c92d4b73"
+    },
+    {
+      "source": "f614a281",
+      "target": "8978f441"
+    },
+    {
+      "source": "1f7b3a99",
+      "target": "b810f679"
+    },
+    {
+      "source": "516d701e",
+      "target": "c92d4b73"
+    },
+    {
+      "source": "price_pca_target_regression",
+      "target": "024e8bb6"
+    },
+    {
+      "source": "dd59380e",
+      "target": "5f299d64"
+    },
+    {
+      "source": "f614a281",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "5d154f28",
+      "target": "28ff800b"
+    },
+    {
+      "source": "85d1a401",
+      "target": "8073b9cd"
+    },
+    {
+      "source": "5d154f28",
+      "target": "8a223d47"
+    },
+    {
+      "source": "90805783",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "6bbf3f76",
+      "target": "64ea11cf"
+    },
+    {
+      "source": "9ddbfd88",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "1283f626",
+      "target": "cfcd10a8"
+    },
+    {
+      "source": "2bf5697d",
+      "target": "b810f679"
+    },
+    {
+      "source": "e73e9b25",
+      "target": "9ba21ec2"
+    },
+    {
+      "source": "a2a5a037",
+      "target": "024e8bb6"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "5d154f28",
+      "target": "66f14d4a"
+    },
+    {
+      "source": "eacecf41",
+      "target": "450966cb"
+    },
+    {
+      "source": "pca_target_regression",
+      "target": "e0f37777"
+    },
+    {
+      "source": "6118ace1",
+      "target": "1e8920cd"
+    },
+    {
+      "source": "d26f904e",
+      "target": "f32191bb"
+    },
+    {
+      "source": "c110eafe",
+      "target": "a14e4729"
+    },
+    {
+      "source": "bcc0e571",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "35966bfb",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "bf0a7cea",
+      "target": "3b90af80"
+    },
+    {
+      "source": "12e4b570",
+      "target": "5f299d64"
+    },
+    {
+      "source": "cb2641d2",
+      "target": "d652089e"
+    },
+    {
+      "source": "99186c21",
+      "target": "f2c6b827"
+    },
+    {
+      "source": "c04a5ed2",
+      "target": "85d1a401"
+    },
+    {
+      "source": "5ce3c820",
+      "target": "b810f679"
+    },
+    {
+      "source": "305e3a2a",
+      "target": "76c406ca"
+    },
+    {
+      "source": "e6597142",
+      "target": "e73e9b25"
+    },
+    {
+      "source": "342c4953",
+      "target": "662bc123"
+    },
+    {
+      "source": "ab4ddd70",
+      "target": "e73e9b25"
+    },
+    {
+      "source": "749a9361",
+      "target": "9d603039"
+    },
+    {
+      "source": "c92d4b73",
+      "target": "12e4b570"
+    },
+    {
+      "source": "516d701e",
+      "target": "e73e9b25"
+    },
+    {
+      "source": "51f33c86",
+      "target": "bbd84cf3"
+    },
+    {
+      "source": "7ee470ac",
+      "target": "8978f441"
+    },
+    {
+      "source": "ab547816",
+      "target": "c92d4b73"
+    },
+    {
+      "source": "e1b67e63",
+      "target": "2cbe20e3"
+    },
+    {
+      "source": "66f14d4a",
+      "target": "3a82a887"
+    },
+    {
+      "source": "8f969404",
+      "target": "eacecf41"
+    },
+    {
+      "source": "b6841e99",
+      "target": "305e3a2a"
+    },
+    {
+      "source": "ff3a89aa",
+      "target": "b810f679"
+    },
+    {
+      "source": "d80632a9",
+      "target": "a2a5a037"
+    },
+    {
+      "source": "d26f904e",
+      "target": "ed3e8cf3"
+    },
+    {
+      "source": "57a34d1d",
+      "target": "d8dce851"
+    },
+    {
+      "source": "1135c720",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "f2c6b827",
+      "target": "acd22615"
+    },
+    {
+      "source": "148ccec0",
+      "target": "305e3a2a"
+    },
+    {
+      "source": "9891faec",
+      "target": "a14427fe"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "a877d89b"
+    },
+    {
+      "source": "466a749a",
+      "target": "2939294f"
+    },
+    {
+      "source": "6118ace1",
+      "target": "34252fd6"
+    },
+    {
+      "source": "a0a9c1db",
+      "target": "40ad06bc"
+    },
+    {
+      "source": "11c6b33b",
+      "target": "6640c626"
+    },
+    {
+      "source": "0e6d52a9",
+      "target": "f32191bb"
+    },
+    {
+      "source": "466a749a",
+      "target": "a2a5a037"
+    },
+    {
+      "source": "3a82a887",
+      "target": "03bdfd27"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "e0b98d8a"
+    },
+    {
+      "source": "a2a5a037",
+      "target": "e80d908f"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "ed3e8cf3"
+    },
+    {
+      "source": "cfcd10a8",
+      "target": "7d74cf6a"
+    },
+    {
+      "source": "e1b67e63",
+      "target": "e6597142"
+    },
+    {
+      "source": "5ce3c820",
+      "target": "e1b67e63"
+    },
+    {
+      "source": "5ce3c820",
+      "target": "4026776d"
+    },
+    {
+      "source": "ab547816",
+      "target": "2a919aef"
+    },
+    {
+      "source": "6481a513",
+      "target": "e2a443ea"
+    },
+    {
+      "source": "cb7b0925",
+      "target": "ed3e8cf3"
+    },
+    {
+      "source": "6481a513",
+      "target": "9563680a"
+    },
+    {
+      "source": "d26f904e",
+      "target": "2620f1d0"
+    },
+    {
+      "source": "148ccec0",
+      "target": "a14e4729"
+    },
+    {
+      "source": "a436d51b",
+      "target": "57a34d1d"
+    },
+    {
+      "source": "12e4b570",
+      "target": "1db381c2"
+    },
+    {
+      "source": "99186c21",
+      "target": "7688e04a"
+    },
+    {
+      "source": "6640c626",
+      "target": "a436d51b"
+    },
+    {
+      "source": "35966bfb",
+      "target": "d06c6f11"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "17050095",
+      "target": "51f33c86"
+    },
+    {
+      "source": "6640c626",
+      "target": "0e6d52a9"
+    },
+    {
+      "source": "2939294f",
+      "target": "9adf90c4"
+    },
+    {
+      "source": "d26f904e",
+      "target": "51f33c86"
+    },
+    {
+      "source": "66f14d4a",
+      "target": "e3aee374"
+    },
+    {
+      "source": "9dbc0d61",
+      "target": "4026776d"
+    },
+    {
+      "source": "bf0a7cea",
+      "target": "b920f4ee"
+    },
+    {
+      "source": "e80d908f",
+      "target": "cfcd10a8"
+    },
+    {
+      "source": "5d154f28",
+      "target": "e1b67e63"
+    },
+    {
+      "source": "11c6b33b",
+      "target": "837ae464"
+    },
+    {
+      "source": "xgboost_monotonic",
+      "target": "662bc123"
+    },
+    {
+      "source": "729ec91b",
+      "target": "ed3e8cf3"
+    },
+    {
+      "source": "9ba21ec2",
+      "target": "6640c626"
+    },
+    {
+      "source": "a0a9c1db",
+      "target": "a4f0a306"
+    },
+    {
+      "source": "ae7c7794",
+      "target": "e1b67e63"
+    },
+    {
+      "source": "e6597142",
+      "target": "85d1a401"
+    },
+    {
+      "source": "ab4ddd70",
+      "target": "8978f441"
+    },
+    {
+      "source": "9adf90c4",
+      "target": "64ea11cf"
+    },
+    {
+      "source": "eaf2f18b",
+      "target": "1e8920cd"
+    },
+    {
+      "source": "90805783",
+      "target": "eacecf41"
+    },
+    {
+      "source": "1d093338",
+      "target": "40ad06bc"
+    },
+    {
+      "source": "ab4ddd70",
+      "target": "85d1a401"
+    },
+    {
+      "source": "b810f679",
+      "target": "9891faec"
+    },
+    {
+      "source": "2cbe20e3",
+      "target": "e73e9b25"
+    },
+    {
+      "source": "342c4953",
+      "target": "b4db3f8c"
+    },
+    {
+      "source": "6bbf3f76",
+      "target": "1db381c2"
+    },
+    {
+      "source": "148ccec0",
+      "target": "20918d63"
+    },
+    {
+      "source": "9ddbfd88",
+      "target": "57a34d1d"
+    },
+    {
+      "source": "c04a5ed2",
+      "target": "749a9361"
+    },
+    {
+      "source": "a429a388",
+      "target": "b810f679"
+    },
+    {
+      "source": "c04a5ed2",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "5ce3c820",
+      "target": "8b277c9a"
+    },
+    {
+      "source": "a14427fe",
+      "target": "afda907c"
+    },
+    {
+      "source": "a14e4729",
+      "target": "f270ef3c"
+    },
+    {
+      "source": "e0b98d8a",
+      "target": "0d07ade9"
+    },
+    {
+      "source": "7688e04a",
+      "target": "b7e20cd6"
+    },
+    {
+      "source": "90805783",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "466a749a",
+      "target": "1db381c2"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "9ddbfd88",
+      "target": "6481a513"
+    },
+    {
+      "source": "f614a281",
+      "target": "a2a5a037"
+    },
+    {
+      "source": "bcc0e571",
+      "target": "cfcd10a8"
+    },
+    {
+      "source": "57a34d1d",
+      "target": "8de74b14"
+    },
+    {
+      "source": "11c6b33b",
+      "target": "2620f1d0"
+    },
+    {
+      "source": "b6841e99",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "xgboost_monotonic",
+      "target": "4e4a93e4"
+    },
+    {
+      "source": "8073b9cd",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "d26f904e",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "b920f4ee",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "1cb512ce",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "xgboost_unconstrained",
+      "target": "fee318a7"
+    },
+    {
+      "source": "0d07ade9",
+      "target": "eacecf41"
+    },
+    {
+      "source": "1f7b3a99",
+      "target": "34252fd6"
+    },
+    {
+      "source": "f32191bb",
+      "target": "659e4568"
+    },
+    {
+      "source": "03bdfd27",
+      "target": "47734221"
+    },
+    {
+      "source": "11c6b33b",
+      "target": "51f33c86"
+    },
+    {
+      "source": "8073b9cd",
+      "target": "a14e4729"
+    },
+    {
+      "source": "ec62358c",
+      "target": "2620f1d0"
+    },
+    {
+      "source": "1d093338",
+      "target": "a4f0a306"
+    },
+    {
+      "source": "f2c6b827",
+      "target": "cb7b0925"
+    },
+    {
+      "source": "03c06aec",
+      "target": "e73e9b25"
+    },
+    {
+      "source": "f614a281",
+      "target": "94d0acd7"
+    },
+    {
+      "source": "c110eafe",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "837ae464",
+      "target": "158b5fd2"
+    },
+    {
+      "source": "fe68af51",
+      "target": "f32191bb"
+    },
+    {
+      "source": "pca_target_regression",
+      "target": "0e090640"
+    },
+    {
+      "source": "466a749a",
+      "target": "64ea11cf"
+    },
+    {
+      "source": "a0a9c1db",
+      "target": "c854656d"
+    },
+    {
+      "source": "8978f441",
+      "target": "07eed1a0"
+    },
+    {
+      "source": "4026776d",
+      "target": "e7fea97c"
+    },
+    {
+      "source": "85d1a401",
+      "target": "eac21cce"
+    },
+    {
+      "source": "a877d89b",
+      "target": "cb3dee3d"
+    },
+    {
+      "source": "ab547816",
+      "target": "8978f441"
+    },
+    {
+      "source": "1f7b3a99",
+      "target": "342c4953"
+    },
+    {
+      "source": "ae7c7794",
+      "target": "03bdfd27"
+    },
+    {
+      "source": "837ae464",
+      "target": "729ec91b"
+    },
+    {
+      "source": "1135c720",
+      "target": "20918d63"
+    },
+    {
+      "source": "837ae464",
+      "target": "0e090640"
+    },
+    {
+      "source": "9ba21ec2",
+      "target": "2620f1d0"
+    },
+    {
+      "source": "c110eafe",
+      "target": "f2c6b827"
+    },
+    {
+      "source": "a6394e1c",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "a14e4729",
+      "target": "35966bfb"
+    },
+    {
+      "source": "2cbe20e3",
+      "target": "8a223d47"
+    },
+    {
+      "source": "34252fd6",
+      "target": "5d154f28"
+    },
+    {
+      "source": "8b277c9a",
+      "target": "0efd5a48"
+    },
+    {
+      "source": "66f14d4a",
+      "target": "3eda7b8e"
+    },
+    {
+      "source": "57a34d1d",
+      "target": "fe68af51"
+    },
+    {
+      "source": "1f7b3a99",
+      "target": "e1b67e63"
+    },
+    {
+      "source": "148ccec0",
+      "target": "34252fd6"
+    },
+    {
+      "source": "xgboost_unconstrained",
+      "target": "9563680a"
+    },
+    {
+      "source": "c04a5ed2",
+      "target": "d06c6f11"
+    },
+    {
+      "source": "40ad06bc",
+      "target": "4bc40f10"
+    },
+    {
+      "source": "5ce3c820",
+      "target": "34252fd6"
+    },
+    {
+      "source": "2a919aef",
+      "target": "305e1de2"
+    },
+    {
+      "source": "2620f1d0",
+      "target": "67f511f8"
+    },
+    {
+      "source": "2cbe20e3",
+      "target": "85d1a401"
+    },
+    {
+      "source": "9ba21ec2",
+      "target": "51f33c86"
+    },
+    {
+      "source": "acd22615",
+      "target": "837ae464"
+    },
+    {
+      "source": "11c6b33b",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "1135c720",
+      "target": "a2a5a037"
+    },
+    {
+      "source": "7ee470ac",
+      "target": "85d1a401"
+    },
+    {
+      "source": "ed3e8cf3",
+      "target": "e0f37777"
+    },
+    {
+      "source": "bf0a7cea",
+      "target": "2e8cef9a"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "eacecf41"
+    },
+    {
+      "source": "c04a5ed2",
+      "target": "7688e04a"
+    },
+    {
+      "source": "c92d4b73",
+      "target": "b6841e99"
+    },
+    {
+      "source": "9dbc0d61",
+      "target": "34252fd6"
+    },
+    {
+      "source": "8073b9cd",
+      "target": "d06c6f11"
+    },
+    {
+      "source": "d26f904e",
+      "target": "d06c6f11"
+    },
+    {
+      "source": "1db381c2",
+      "target": "5c551c9e"
+    },
+    {
+      "source": "90805783",
+      "target": "a877d89b"
+    },
+    {
+      "source": "bf0a7cea",
+      "target": "2b8928dc"
+    },
+    {
+      "source": "1d093338",
+      "target": "c854656d"
+    },
+    {
+      "source": "5c83f7b8",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "ae7c7794",
+      "target": "34252fd6"
+    },
+    {
+      "source": "1283f626",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "d652089e"
+    },
+    {
+      "source": "07eed1a0",
+      "target": "20918d63"
+    },
+    {
+      "source": "bf0a7cea",
+      "target": "082a5865"
+    },
+    {
+      "source": "6481a513",
+      "target": "cb2641d2"
+    },
+    {
+      "source": "b6841e99",
+      "target": "64ea11cf"
+    },
+    {
+      "source": "66f14d4a",
+      "target": "516d701e"
+    },
+    {
+      "source": "2939294f",
+      "target": "9271d9b3"
+    },
+    {
+      "source": "3a82a887",
+      "target": "1e8920cd"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "1f7b3a99",
+      "target": "2939294f"
+    },
+    {
+      "source": "148ccec0",
+      "target": "4026776d"
+    },
+    {
+      "source": "082a5865",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "99186c21",
+      "target": "57a34d1d"
+    },
+    {
+      "source": "342c4953",
+      "target": "8f969404"
+    },
+    {
+      "source": "6abc0f31",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "e73e9b25",
+      "target": "11c6b33b"
+    },
+    {
+      "source": "9ba21ec2",
+      "target": "pca_target_regression"
+    },
+    {
+      "source": "5c83f7b8",
+      "target": "f2c6b827"
+    },
+    {
+      "source": "81bbf0d4",
+      "target": "57a34d1d"
+    },
+    {
+      "source": "1d093338",
+      "target": "b810f679"
+    },
+    {
+      "source": "e73e9b25",
+      "target": "d26f904e"
+    },
+    {
+      "source": "a429a388",
+      "target": "1e8920cd"
+    },
+    {
+      "source": "92928a06",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "e3aee374",
+      "target": "8978f441"
+    },
+    {
+      "source": "bf0a7cea",
+      "target": "6de15ba3"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "eacecf41"
+    },
+    {
+      "source": "c110eafe",
+      "target": "7688e04a"
+    },
+    {
+      "source": "e3aee374",
+      "target": "85d1a401"
+    },
+    {
+      "source": "07eed1a0",
+      "target": "price_pca_target_regression"
+    },
+    {
+      "source": "03c06aec",
+      "target": "03bdfd27"
+    },
+    {
+      "source": "b6841e99",
+      "target": "cfcd10a8"
+    },
+    {
+      "source": "7688e04a",
+      "target": "ff20b49a"
+    },
+    {
+      "source": "06633a34",
+      "target": "e1b67e63"
+    },
+    {
+      "source": "35966bfb",
+      "target": "837ae464"
+    },
+    {
+      "source": "f614a281",
+      "target": "cfcd10a8"
+    },
+    {
+      "source": "11c6b33b",
+      "target": "ed3e8cf3"
+    },
+    {
+      "source": "a2a5a037",
+      "target": "6a7b7b21"
+    },
+    {
+      "source": "b7e20cd6",
+      "target": "d06c6f11"
+    },
+    {
+      "source": "1e8920cd",
+      "target": "88d21994"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "3eda7b8e",
+      "target": "c92d4b73"
+    },
+    {
+      "source": "5f299d64",
+      "target": "0411977b"
+    },
+    {
+      "source": "3b90af80",
+      "target": "eacecf41"
+    },
+    {
+      "source": "1cb512ce",
+      "target": "2939294f"
+    },
+    {
+      "source": "85d1a401",
+      "target": "5c83f7b8"
+    },
+    {
+      "source": "90805783",
+      "target": "66f14d4a"
+    },
+    {
+      "source": "f6442adf",
+      "target": "63414db8"
+    },
+    {
+      "source": "b6841e99",
+      "target": "5f299d64"
+    },
+    {
+      "source": "price_pca_target_regression",
+      "target": "7d74cf6a"
+    },
+    {
+      "source": "xgboost_unconstrained",
+      "target": "cb3dee3d"
+    },
+    {
+      "source": "e7fea97c",
+      "target": "66f14d4a"
+    },
+    {
+      "source": "99186c21",
+      "target": "2620f1d0"
+    },
+    {
+      "source": "b920f4ee",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "cfcd10a8",
+      "target": "0ed304e0"
+    },
+    {
+      "source": "d06c6f11",
+      "target": "2af71aa9"
+    },
+    {
+      "source": "a429a388",
+      "target": "34252fd6"
+    },
+    {
+      "source": "8978f441",
+      "target": "bcc0e571"
+    },
+    {
+      "source": "pca_target_regression",
+      "target": "5f7da03a"
+    },
+    {
+      "source": "e0b98d8a",
+      "target": "4e4a93e4"
+    },
+    {
+      "source": "7688e04a",
+      "target": "ec62358c"
+    },
+    {
+      "source": "b810f679",
+      "target": "ab547816"
+    }
+  ],
+  "layers": [
+    "database_extractions",
+    "raw",
+    "primary",
+    "primary_train_test_split",
+    "train_data",
+    "models",
+    "model_output",
+    "reporting"
+  ],
+  "tags": [
+    {
+      "id": "fit_pca",
+      "name": "fit_pca"
+    },
+    {
+      "id": "intermediate_reporting",
+      "name": "intermediate_reporting"
+    },
+    {
+      "id": "model_reporting",
+      "name": "model_reporting"
+    },
+    {
+      "id": "preprocess_input_data",
+      "name": "preprocess_input_data"
+    },
+    {
+      "id": "primary_data_to_input_data",
+      "name": "primary_data_to_input_data"
+    },
+    {
+      "id": "raw_data_extraction_to_db",
+      "name": "raw_data_extraction_to_db"
+    },
+    {
+      "id": "raw_data_to_primary_data",
+      "name": "raw_data_to_primary_data"
+    },
+    {
+      "id": "test_model",
+      "name": "test_model"
+    },
+    {
+      "id": "train_model",
+      "name": "train_model"
+    },
+    {
+      "id": "train_test_split",
+      "name": "train_test_split"
+    }
+  ],
+  "pipelines": [
+    {
+      "id": "__default__",
+      "name": "__default__"
+    },
+    {
+      "id": "extract_data_to_parquet",
+      "name": "extract_data_to_parquet"
+    },
+    {
+      "id": "pca_target_regression",
+      "name": "pca_target_regression"
+    },
+    {
+      "id": "xgboost_unconstrained",
+      "name": "xgboost_unconstrained"
+    },
+    {
+      "id": "xgboost_monotonic",
+      "name": "xgboost_monotonic"
+    },
+    {
+      "id": "price_pca_target_regression_pipeline",
+      "name": "price_pca_target_regression_pipeline"
+    }
+  ],
+  "modular_pipelines": {
+    "__root__": {
+      "id": "__root__",
+      "name": "__root__",
+      "inputs": [],
+      "outputs": [],
+      "children": [
+        {
+          "id": "d8dce851",
+          "type": "data"
+        },
+        {
+          "id": "a4f0a306",
+          "type": "task"
+        },
+        {
+          "id": "e6597142",
+          "type": "data"
+        },
+        {
+          "id": "xgboost_monotonic",
+          "type": "modularPipeline"
+        },
+        {
+          "id": "4bc40f10",
+          "type": "data"
+        },
+        {
+          "id": "63414db8",
+          "type": "data"
+        },
+        {
+          "id": "b920f4ee",
+          "type": "data"
+        },
+        {
+          "id": "ff20b49a",
+          "type": "data"
+        },
+        {
+          "id": "66f14d4a",
+          "type": "task"
+        },
+        {
+          "id": "4fc42db9",
+          "type": "parameters"
+        },
+        {
+          "id": "6640c626",
+          "type": "task"
+        },
+        {
+          "id": "a14e4729",
+          "type": "task"
+        },
+        {
+          "id": "c4a1d860",
+          "type": "data"
+        },
+        {
+          "id": "28ff800b",
+          "type": "task"
+        },
+        {
+          "id": "1985ba29",
+          "type": "data"
+        },
+        {
+          "id": "f6442adf",
+          "type": "task"
+        },
+        {
+          "id": "8de74b14",
+          "type": "data"
+        },
+        {
+          "id": "price_pca_target_regression",
+          "type": "modularPipeline"
+        },
+        {
+          "id": "dd59380e",
+          "type": "data"
+        },
+        {
+          "id": "2939294f",
+          "type": "task"
+        },
+        {
+          "id": "a429a388",
+          "type": "parameters"
+        },
+        {
+          "id": "1283f626",
+          "type": "data"
+        },
+        {
+          "id": "bf783755",
+          "type": "data"
+        },
+        {
+          "id": "3b90af80",
+          "type": "data"
+        },
+        {
+          "id": "eac21cce",
+          "type": "data"
+        },
+        {
+          "id": "94d0acd7",
+          "type": "task"
+        },
+        {
+          "id": "34252fd6",
+          "type": "task"
+        },
+        {
+          "id": "9891faec",
+          "type": "data"
+        },
+        {
+          "id": "d06c6f11",
+          "type": "task"
+        },
+        {
+          "id": "c92d4b73",
+          "type": "task"
+        },
+        {
+          "id": "11c6b33b",
+          "type": "data"
+        },
+        {
+          "id": "5f299d64",
+          "type": "task"
+        },
+        {
+          "id": "0ee6bc41",
+          "type": "data"
+        },
+        {
+          "id": "6ca5b0c1",
+          "type": "data"
+        },
+        {
+          "id": "f614a281",
+          "type": "data"
+        },
+        {
+          "id": "f32191bb",
+          "type": "task"
+        },
+        {
+          "id": "1f7b3a99",
+          "type": "parameters"
+        },
+        {
+          "id": "bf0a7cea",
+          "type": "task"
+        },
+        {
+          "id": "0411977b",
+          "type": "data"
+        },
+        {
+          "id": "2af71aa9",
+          "type": "data"
+        },
+        {
+          "id": "2b8928dc",
+          "type": "data"
+        },
+        {
+          "id": "43cb0013",
+          "type": "data"
+        },
+        {
+          "id": "6118ace1",
+          "type": "parameters"
+        },
+        {
+          "id": "2091faeb",
+          "type": "data"
+        },
+        {
+          "id": "c854656d",
+          "type": "task"
+        },
+        {
+          "id": "659e4568",
+          "type": "data"
+        },
+        {
+          "id": "40ad06bc",
+          "type": "task"
+        },
+        {
+          "id": "85d1a401",
+          "type": "task"
+        },
+        {
+          "id": "9d603039",
+          "type": "data"
+        },
+        {
+          "id": "92928a06",
+          "type": "data"
+        },
+        {
+          "id": "305e1de2",
+          "type": "data"
+        },
+        {
+          "id": "6abc0f31",
+          "type": "parameters"
+        },
+        {
+          "id": "516d701e",
+          "type": "data"
+        },
+        {
+          "id": "2e8cef9a",
+          "type": "data"
+        },
+        {
+          "id": "ec62358c",
+          "type": "data"
+        },
+        {
+          "id": "5ce3c820",
+          "type": "parameters"
+        },
+        {
+          "id": "07eed1a0",
+          "type": "data"
+        },
+        {
+          "id": "a6394e1c",
+          "type": "data"
+        },
+        {
+          "id": "12e4b570",
+          "type": "data"
+        },
+        {
+          "id": "1d093338",
+          "type": "parameters"
+        },
+        {
+          "id": "0e6d52a9",
+          "type": "data"
+        },
+        {
+          "id": "9dbc0d61",
+          "type": "data"
+        },
+        {
+          "id": "5c83f7b8",
+          "type": "data"
+        },
+        {
+          "id": "5d154f28",
+          "type": "data"
+        },
+        {
+          "id": "69f8e2f3",
+          "type": "data"
+        },
+        {
+          "id": "03bdfd27",
+          "type": "task"
+        },
+        {
+          "id": "e3aee374",
+          "type": "data"
+        },
+        {
+          "id": "a436d51b",
+          "type": "data"
+        },
+        {
+          "id": "2bf5697d",
+          "type": "parameters"
+        },
+        {
+          "id": "81bbf0d4",
+          "type": "data"
+        },
+        {
+          "id": "6ff74f19",
+          "type": "data"
+        },
+        {
+          "id": "b6841e99",
+          "type": "data"
+        },
+        {
+          "id": "2a919aef",
+          "type": "task"
+        },
+        {
+          "id": "47734221",
+          "type": "data"
+        },
+        {
+          "id": "1003e99b",
+          "type": "data"
+        },
+        {
+          "id": "cb3dee3d",
+          "type": "data"
+        },
+        {
+          "id": "ff3a89aa",
+          "type": "data"
+        },
+        {
+          "id": "03c06aec",
+          "type": "parameters"
+        },
+        {
+          "id": "bcc0e571",
+          "type": "data"
+        },
+        {
+          "id": "xgboost_unconstrained",
+          "type": "modularPipeline"
+        },
+        {
+          "id": "6de15ba3",
+          "type": "data"
+        },
+        {
+          "id": "bbd84cf3",
+          "type": "data"
+        },
+        {
+          "id": "082a5865",
+          "type": "data"
+        },
+        {
+          "id": "1cb512ce",
+          "type": "data"
+        },
+        {
+          "id": "e73e9b25",
+          "type": "task"
+        },
+        {
+          "id": "2620f1d0",
+          "type": "task"
+        },
+        {
+          "id": "7688e04a",
+          "type": "task"
+        },
+        {
+          "id": "9adf90c4",
+          "type": "data"
+        },
+        {
+          "id": "20918d63",
+          "type": "task"
+        },
+        {
+          "id": "9ba21ec2",
+          "type": "data"
+        },
+        {
+          "id": "e7fea97c",
+          "type": "data"
+        },
+        {
+          "id": "d80632a9",
+          "type": "data"
+        },
+        {
+          "id": "a14427fe",
+          "type": "task"
+        },
+        {
+          "id": "305e3a2a",
+          "type": "task"
+        },
+        {
+          "id": "ae7c7794",
+          "type": "parameters"
+        },
+        {
+          "id": "148ccec0",
+          "type": "parameters"
+        },
+        {
+          "id": "8b277c9a",
+          "type": "task"
+        },
+        {
+          "id": "c04a5ed2",
+          "type": "data"
+        },
+        {
+          "id": "e0f37777",
+          "type": "data"
+        },
+        {
+          "id": "64ea11cf",
+          "type": "task"
+        },
+        {
+          "id": "3a82a887",
+          "type": "data"
+        },
+        {
+          "id": "b6decd2a",
+          "type": "data"
+        },
+        {
+          "id": "99186c21",
+          "type": "data"
+        },
+        {
+          "id": "749a9361",
+          "type": "task"
+        },
+        {
+          "id": "d2801c3d",
+          "type": "data"
+        },
+        {
+          "id": "eaf2f18b",
+          "type": "data"
+        },
+        {
+          "id": "ab4ddd70",
+          "type": "parameters"
+        },
+        {
+          "id": "afda907c",
+          "type": "data"
+        },
+        {
+          "id": "6bbf3f76",
+          "type": "parameters"
+        },
+        {
+          "id": "0efd5a48",
+          "type": "data"
+        },
+        {
+          "id": "3eda7b8e",
+          "type": "data"
+        },
+        {
+          "id": "466a749a",
+          "type": "data"
+        },
+        {
+          "id": "1e8920cd",
+          "type": "task"
+        },
+        {
+          "id": "5c551c9e",
+          "type": "data"
+        },
+        {
+          "id": "17050095",
+          "type": "data"
+        },
+        {
+          "id": "1135c720",
+          "type": "data"
+        },
+        {
+          "id": "76c406ca",
+          "type": "data"
+        },
+        {
+          "id": "90ae7fbf",
+          "type": "data"
+        },
+        {
+          "id": "8073b9cd",
+          "type": "data"
+        },
+        {
+          "id": "d26f904e",
+          "type": "data"
+        },
+        {
+          "id": "67f511f8",
+          "type": "data"
+        },
+        {
+          "id": "e1b67e63",
+          "type": "task"
+        },
+        {
+          "id": "7ee470ac",
+          "type": "data"
+        },
+        {
+          "id": "8978f441",
+          "type": "task"
+        },
+        {
+          "id": "9271d9b3",
+          "type": "data"
+        },
+        {
+          "id": "35966bfb",
+          "type": "data"
+        },
+        {
+          "id": "59524fc6",
+          "type": "data"
+        },
+        {
+          "id": "450966cb",
+          "type": "data"
+        },
+        {
+          "id": "9ddbfd88",
+          "type": "parameters"
+        },
+        {
+          "id": "06633a34",
+          "type": "parameters"
+        },
+        {
+          "id": "ab547816",
+          "type": "data"
+        },
+        {
+          "id": "6fadb36e",
+          "type": "data"
+        },
+        {
+          "id": "b810f679",
+          "type": "task"
+        },
+        {
+          "id": "f270ef3c",
+          "type": "data"
+        },
+        {
+          "id": "pca_target_regression",
+          "type": "modularPipeline"
+        },
+        {
+          "id": "90805783",
+          "type": "parameters"
+        },
+        {
+          "id": "c110eafe",
+          "type": "data"
+        },
+        {
+          "id": "c70353ff",
+          "type": "data"
+        },
+        {
+          "id": "8a223d47",
+          "type": "task"
+        },
+        {
+          "id": "51f33c86",
+          "type": "task"
+        },
+        {
+          "id": "4026776d",
+          "type": "task"
+        },
+        {
+          "id": "88d21994",
+          "type": "data"
+        },
+        {
+          "id": "b7e20cd6",
+          "type": "data"
+        },
+        {
+          "id": "a0a9c1db",
+          "type": "parameters"
+        },
+        {
+          "id": "fe68af51",
+          "type": "data"
+        },
+        {
+          "id": "2cbe20e3",
+          "type": "data"
+        },
+        {
+          "id": "57a34d1d",
+          "type": "task"
+        }
+      ]
+    },
+    "pca_target_regression": {
+      "id": "pca_target_regression",
+      "name": "pca_target_regression",
+      "inputs": [
+        "11c6b33b",
+        "a6394e1c",
+        "5c83f7b8",
+        "4fc42db9",
+        "35966bfb",
+        "99186c21",
+        "c110eafe",
+        "8073b9cd",
+        "9ba21ec2",
+        "c04a5ed2",
+        "90805783",
+        "d26f904e"
+      ],
+      "outputs": [
+        "0e090640",
+        "158b5fd2",
+        "f3dd0aa7",
+        "e0f37777",
+        "5f7da03a"
+      ],
+      "children": [
+        {
+          "id": "cb7b0925",
+          "type": "data"
+        },
+        {
+          "id": "837ae464",
+          "type": "task"
+        },
+        {
+          "id": "f2c6b827",
+          "type": "task"
+        },
+        {
+          "id": "5f7da03a",
+          "type": "data"
+        },
+        {
+          "id": "acd22615",
+          "type": "data"
+        },
+        {
+          "id": "f3dd0aa7",
+          "type": "data"
+        },
+        {
+          "id": "729ec91b",
+          "type": "data"
+        },
+        {
+          "id": "0e090640",
+          "type": "data"
+        },
+        {
+          "id": "ed3e8cf3",
+          "type": "task"
+        },
+        {
+          "id": "158b5fd2",
+          "type": "data"
+        }
+      ]
+    },
+    "price_pca_target_regression": {
+      "id": "price_pca_target_regression",
+      "name": "price_pca_target_regression",
+      "inputs": [
+        "07eed1a0",
+        "d2801c3d",
+        "1135c720",
+        "6bbf3f76",
+        "f614a281",
+        "1283f626",
+        "b6841e99",
+        "12e4b570",
+        "466a749a",
+        "92928a06",
+        "d80632a9",
+        "1cb512ce",
+        "bcc0e571",
+        "6abc0f31",
+        "88d21994"
+      ],
+      "outputs": [
+        "6a7b7b21",
+        "7d74cf6a",
+        "5c551c9e",
+        "6a3dcfd2",
+        "024e8bb6"
+      ],
+      "children": [
+        {
+          "id": "7d74cf6a",
+          "type": "data"
+        },
+        {
+          "id": "024e8bb6",
+          "type": "data"
+        },
+        {
+          "id": "e80d908f",
+          "type": "data"
+        },
+        {
+          "id": "6a7b7b21",
+          "type": "data"
+        },
+        {
+          "id": "029c45aa",
+          "type": "data"
+        },
+        {
+          "id": "6a3dcfd2",
+          "type": "data"
+        },
+        {
+          "id": "0ed304e0",
+          "type": "data"
+        },
+        {
+          "id": "1db381c2",
+          "type": "task"
+        },
+        {
+          "id": "cfcd10a8",
+          "type": "task"
+        },
+        {
+          "id": "a2a5a037",
+          "type": "task"
+        }
+      ]
+    },
+    "xgboost_monotonic": {
+      "id": "xgboost_monotonic",
+      "name": "xgboost_monotonic",
+      "inputs": [
+        "1f7b3a99",
+        "3b90af80",
+        "082a5865",
+        "4fc42db9",
+        "2e8cef9a",
+        "2b8928dc",
+        "9ddbfd88",
+        "bf783755",
+        "90805783",
+        "b920f4ee"
+      ],
+      "outputs": [
+        "4e4a93e4",
+        "662bc123",
+        "450966cb"
+      ],
+      "children": [
+        {
+          "id": "662bc123",
+          "type": "data"
+        },
+        {
+          "id": "8f969404",
+          "type": "data"
+        },
+        {
+          "id": "e0b98d8a",
+          "type": "task"
+        },
+        {
+          "id": "eacecf41",
+          "type": "task"
+        },
+        {
+          "id": "342c4953",
+          "type": "task"
+        },
+        {
+          "id": "b4db3f8c",
+          "type": "data"
+        },
+        {
+          "id": "0d07ade9",
+          "type": "data"
+        },
+        {
+          "id": "4e4a93e4",
+          "type": "data"
+        }
+      ]
+    },
+    "xgboost_unconstrained": {
+      "id": "xgboost_unconstrained",
+      "name": "xgboost_unconstrained",
+      "inputs": [
+        "3b90af80",
+        "082a5865",
+        "4fc42db9",
+        "2e8cef9a",
+        "2b8928dc",
+        "9ddbfd88",
+        "bf783755",
+        "90805783",
+        "b920f4ee"
+      ],
+      "outputs": [
+        "9563680a",
+        "cb3dee3d",
+        "fee318a7"
+      ],
+      "children": [
+        {
+          "id": "7e106842",
+          "type": "data"
+        },
+        {
+          "id": "d652089e",
+          "type": "task"
+        },
+        {
+          "id": "6481a513",
+          "type": "task"
+        },
+        {
+          "id": "cb2641d2",
+          "type": "data"
+        },
+        {
+          "id": "e2a443ea",
+          "type": "data"
+        },
+        {
+          "id": "9563680a",
+          "type": "data"
+        },
+        {
+          "id": "fee318a7",
+          "type": "data"
+        },
+        {
+          "id": "a877d89b",
+          "type": "task"
+        }
+      ]
+    }
+  },
+  "selected_pipeline": "__default__"
+}

@@ -1,0 +1,19 @@
+{
+  "code": "def test_xgboost_batched_energy_pca_as_target(\n    trained_xgboost_batched_energy_pca_as_target,\n    X_test_batched_energy_pca_as_target_dataset_preprocessed,\n    fitted_fpca,\n    X_test_batched_energy_pca_as_target_dataset,\n    test_dataset,\n    y_test_dataset,\n):\n    y_test_batched_energy_pca_as_target_dataset_predicted = (\n        trained_xgboost_batched_energy_pca_as_target.predict(\n            X_test_batched_energy_pca_as_target_dataset_preprocessed\n        )\n    )\n\n    y_test_batched_energy_pca_as_target_dataset_predicted_reconstructed = (\n        reconstruct_data_from_pcas(\n            fitted_fpca,\n            X_test_batched_energy_pca_as_target_dataset,\n            y_test_batched_energy_pca_as_target_dataset_predicted,\n            test_dataset,\n        )\n    )\n\n    metrics = calculate_metrics(\n        y_test_dataset,\n        y_test_batched_energy_pca_as_target_dataset_predicted_reconstructed,\n    )\n\n    return (\n        y_test_batched_energy_pca_as_target_dataset_predicted,\n        y_test_batched_energy_pca_as_target_dataset_predicted_reconstructed,\n        metrics,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_pca_energy_as_target\\test_xgboost_batched_energy_pca_as_target.py",
+  "parameters": {},
+  "run_command": "kedro run --to-nodes=test_xgboost_batched_energy_pca_as_target",
+  "inputs": [
+    "trained_xgboost_batched_energy_pca_as_target",
+    "X_test_batched_energy_pca_as_target_dataset_preprocessed",
+    "fitted_fpca",
+    "X_test_batched_energy_pca_as_target_dataset",
+    "X_test_dataset",
+    "y_test_dataset"
+  ],
+  "outputs": [
+    "y_test_batched_energy_pca_as_target_dataset_predicted",
+    "y_test_batched_energy_pca_as_target_dataset_predicted_reconstructed",
+    "xgboost_batched_energy_pca_as_target_test_dataset_metrics"
+  ]
+}

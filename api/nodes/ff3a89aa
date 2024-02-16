@@ -1,0 +1,14 @@
+{
+  "type": "pandas.parquet_dataset.ParquetDataset",
+  "filepath": "C:/Users/einsunza/OneDrive - Universidad Pontificia Comillas/Escritorio/work/energy-market-forecast/data/03_primary/featured_price_merged_input_data.parquet",
+  "plot": null,
+  "image": null,
+  "tracking_data": null,
+  "run_command": "kedro run --to-outputs=featured_price_merged_input_data",
+  "preview": null,
+  "stats": {
+    "rows": 66473,
+    "columns": 7,
+    "file_size": 508989
+  }
+}

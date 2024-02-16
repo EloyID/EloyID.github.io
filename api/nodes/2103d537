@@ -1,0 +1,24 @@
+{
+  "code": "def extract_databases_to_parquet(database_config):\n\n    database_uri = get_database_uri(database_config)\n    engine = sqlalchemy.create_engine(database_uri)\n\n    merged_input_data = pd.read_sql(\"SELECT * FROM merged_input_data\", engine)\n\n    batched_input_data = pd.read_sql(\"SELECT * FROM batched_input_data\", engine)\n\n    daily_info = pd.read_sql(\"SELECT * FROM daily_info\", engine)\n\n    raw_pbc = pd.read_sql(\"SELECT * FROM raw_pbc\", engine)\n\n    raw_solar = pd.read_sql(\"SELECT * FROM raw_solar\", engine)\n\n    raw_wind = pd.read_sql(\"SELECT * FROM raw_wind\", engine)\n\n    return (\n        merged_input_data,\n        batched_input_data,\n        daily_info,\n        raw_pbc,\n        raw_solar,\n        raw_wind,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\reporting\\extract_databases_to_parquet.py",
+  "parameters": {
+    "database_config": {
+      "database": "energy-market-forecast",
+      "user": "root",
+      "password": "3loy3loy",
+      "host": "127.0.0.1"
+    }
+  },
+  "run_command": "kedro run --to-nodes=extract_databases_to_parquet",
+  "inputs": [
+    "params:database_config"
+  ],
+  "outputs": [
+    "merged_input_data_extract",
+    "batched_input_data_extract",
+    "daily_info_extract",
+    "raw_pbc_extract",
+    "raw_solar_extract",
+    "raw_wind_extract"
+  ]
+}

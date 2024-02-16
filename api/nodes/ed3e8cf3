@@ -1,0 +1,22 @@
+{
+  "code": "def pca_target_regression_reporting(\n    X_train,\n    y_train,\n    y_train_pred,\n    X_test,\n    y_test,\n    y_test_pred,\n    min_energy_cumsum_eval,\n    max_energy_cumsum_eval,\n):\n    return xgboost_monotonic_reporting(\n        \"Regression PCA as target\",\n        X_train,\n        y_train,\n        y_train_pred,\n        X_test,\n        y_test,\n        y_test_pred,\n        min_energy_cumsum_eval,\n        max_energy_cumsum_eval,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_pca_target_regression\\pca_target_regression_reporting.py",
+  "parameters": {
+    "min_energy_cumsum_eval": 5000,
+    "max_energy_cumsum_eval": 30000
+  },
+  "run_command": "kedro run --to-nodes=pca_target_regression.pca_target_regression_reporting",
+  "inputs": [
+    "X_train_dataset",
+    "y_train_dataset",
+    "pca_target_regression.y_train_pca_target_regression_dataset_predicted_reconstructed",
+    "X_test_dataset",
+    "y_test_dataset",
+    "pca_target_regression.y_test_pca_target_regression_dataset_predicted_reconstructed",
+    "params:min_energy_cumsum_eval",
+    "params:max_energy_cumsum_eval"
+  ],
+  "outputs": [
+    "pca_target_regression_reporting_plots"
+  ]
+}

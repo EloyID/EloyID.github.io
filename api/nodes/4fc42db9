@@ -1,0 +1,5 @@
+{
+  "parameters": {
+    "max_energy_cumsum_eval": 30000
+  }
+}

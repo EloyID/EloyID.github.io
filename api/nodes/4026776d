@@ -1,0 +1,33 @@
+{
+  "code": "def create_daily_infos_table(\n    raw_wind_data,\n    raw_solar_data,\n    raw_demand_data,\n    start_date,\n    end_date,\n    optional_explanatory_variables,\n    database_config,\n):\n    create_daily_info_connection(database_config)\n    database_uri = get_database_uri(database_config)\n    engine = sqlalchemy.create_engine(database_uri)\n\n    raw_wind_data = pd.read_sql_query(\n        \"SELECT datetime_utc, value FROM raw_wind\", engine\n    )\n    raw_solar_data = pd.read_sql_query(\n        \"SELECT datetime_utc, value FROM raw_solar\", engine\n    )\n    raw_demand_data = pd.read_sql_query(\n        \"SELECT datetime_utc, value FROM raw_demand\", engine\n    )\n\n    raw_wind_data[\"datetime_utc\"] = pd.to_datetime(\n        raw_wind_data[\"datetime_utc\"]\n    ).dt.tz_localize(None)\n    wind_dates = raw_wind_data[\"datetime_utc\"]\n\n    raw_solar_data[\"datetime_utc\"] = pd.to_datetime(\n        raw_solar_data[\"datetime_utc\"]\n    ).dt.tz_localize(None)\n\n    raw_demand_data[\"datetime_utc\"] = pd.to_datetime(\n        raw_demand_data[\"datetime_utc\"]\n    ).dt.tz_localize(None)\n\n    daily_infos_dates = pd.read_sql_query(\n        \"SELECT DISTINCT `Fecha UTC` FROM daily_info\", engine\n    )\n\n    # Convert both date series to datetime and remove timezone information\n    daily_infos_dates = pd.to_datetime(daily_infos_dates[\"Fecha UTC\"]).dt.tz_localize(\n        None\n    )\n\n    # Find the dates in wind_dates that are not in daily_infos_dates\n    missing_dates = set(wind_dates) - set(daily_infos_dates)\n\n    wind_data = raw_wind_data.loc[\n        raw_wind_data[\"datetime_utc\"].isin(missing_dates),\n        [\"datetime_utc\", \"value\"],\n    ]\n    wind_data.columns = [\"Fecha UTC\", \"Predicción eólica\"]\n\n    solar_data = raw_solar_data.loc[\n        raw_solar_data[\"datetime_utc\"].isin(missing_dates),\n        [\"datetime_utc\", \"value\"],\n    ]\n    solar_data.columns = [\"Fecha UTC\", \"Predicción solar\"]\n\n    demand_data = raw_demand_data.loc[\n        raw_demand_data[\"datetime_utc\"].isin(missing_dates),\n        [\"datetime_utc\", \"value\"],\n    ]\n    demand_data.columns = [\"Fecha UTC\", \"Predicción demanda\"]\n\n    data = pd.merge(wind_data, solar_data, on=\"Fecha UTC\")\n    data = pd.merge(data, demand_data, on=\"Fecha UTC\")\n\n    data[\"Fecha UTC\"] = pd.to_datetime(data[\"Fecha UTC\"])\n\n    data[\"Mes\"] = data[\"Fecha UTC\"].dt.month\n    data[\"Día de la semana\"] = data[\"Fecha UTC\"].dt.dayofweek\n    data[\"Hora\"] = data[\"Fecha UTC\"].dt.hour\n\n    raise_exception_if_any_na(data)\n    data.to_sql(\"daily_info\", engine, if_exists=\"append\", index=False)\n\n    start_date = extract_datetime_from_date_parameter(start_date)\n    end_date = extract_datetime_from_date_parameter(end_date)\n\n    selected_columns = [\n        \"Fecha UTC\",\n        *optional_explanatory_variables,\n    ]\n\n    daily_info = pd.read_sql_query(\n        f\"\"\"SELECT {field_list_to_sql_string(selected_columns)} FROM daily_info \n        WHERE `Fecha UTC` BETWEEN '{start_date}' AND '{end_date}'\n        \"\"\",\n        engine,\n    )\n\n    return daily_info\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\data_transformations\\create_daily_infos_table.py",
+  "parameters": {
+    "start_date": "2024-01-20",
+    "end_date": "2024-01-31",
+    "optional_explanatory_variables": [
+      "Hora",
+      "Día de la semana",
+      "Predicción eólica",
+      "Predicción demanda"
+    ],
+    "database_config": {
+      "database": "energy-market-forecast",
+      "user": "root",
+      "password": "3loy3loy",
+      "host": "127.0.0.1"
+    }
+  },
+  "run_command": "kedro run --to-nodes=create_daily_infos_table",
+  "inputs": [
+    "raw_wind_data",
+    "raw_solar_data",
+    "raw_demand_data",
+    "params:start_date",
+    "params:end_date",
+    "params:optional_explanatory_variables",
+    "params:database_config"
+  ],
+  "outputs": [
+    "daily_info"
+  ]
+}

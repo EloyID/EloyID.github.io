@@ -1,0 +1,28 @@
+{
+  "code": "def build_price_pca_dataset(\n    train_merged_input_data,\n    test_merged_input_data,\n    batched_price_input_data,\n    fitted_price_fpca,\n    batches,\n    lags,\n):\n    functional_principal_components = get_fpca_values(\n        fitted_fpca=fitted_price_fpca,\n        batches=batches,\n        batched_data=batched_price_input_data,\n        pivot_values=\"Energía Compra/Venta Acumulada\",\n        pivot_columns=\"Precio Compra/Venta\",\n    )\n\n    train_price_dataset = merge_lagged_values(\n        lags,\n        train_merged_input_data,\n        functional_principal_components,\n        \"Fecha UTC\",\n        \"Fecha UTC\",\n    )\n\n    test_price_dataset = merge_lagged_values(\n        lags,\n        test_merged_input_data,\n        functional_principal_components,\n        \"Fecha UTC\",\n        \"Fecha UTC\",\n    )\n\n    X_train_price_pca_dataset = train_price_dataset.drop(\n        \"Energía Compra/Venta Acumulada\", axis=1\n    )\n    y_train_price_pca_dataset = train_price_dataset[\"Energía Compra/Venta Acumulada\"]\n\n    X_test_price_pca_dataset = test_price_dataset.drop(\n        \"Energía Compra/Venta Acumulada\", axis=1\n    )\n    y_test_price_pca_dataset = test_price_dataset[\"Energía Compra/Venta Acumulada\"]\n\n    return (\n        X_train_price_pca_dataset,\n        y_train_price_pca_dataset,\n        X_test_price_pca_dataset,\n        y_test_price_pca_dataset,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_monotonic_price_pca\\build_price_pca_dataset.py",
+  "parameters": {
+    "lags": [
+      {
+        "d": [
+          1
+        ]
+      }
+    ]
+  },
+  "run_command": "kedro run --to-nodes=build_price_pca_dataset",
+  "inputs": [
+    "train_merged_input_data",
+    "test_merged_input_data",
+    "batched_price_input_data",
+    "fitted_price_fpca",
+    "price_batches",
+    "params:lags"
+  ],
+  "outputs": [
+    "X_train_price_pca_dataset",
+    "y_train_price_pca_dataset",
+    "X_test_price_pca_dataset",
+    "y_test_price_pca_dataset"
+  ]
+}

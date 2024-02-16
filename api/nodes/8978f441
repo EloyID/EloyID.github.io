@@ -1,0 +1,28 @@
+{
+  "code": "def build_batched_price_pca_as_target_dataset(\n    train_daily_info, test_daily_info, batched_input_data, fitted_fpca, batches, lags\n):\n    functional_principal_components = get_fpca_values(\n        fitted_fpca=fitted_fpca,\n        batches=batches,\n        batched_data=batched_input_data,\n        pivot_values=\"Energía Compra/Venta Acumulada\",\n        pivot_columns=\"Precio Compra/Venta\",\n    )\n\n    # feature fpcas\n\n    train_dataset = merge_lagged_values(\n        lags,\n        train_daily_info,\n        functional_principal_components,\n        \"Fecha UTC\",\n        \"Fecha UTC\",\n    )\n\n    test_dataset = merge_lagged_values(\n        lags,\n        test_daily_info,\n        functional_principal_components,\n        \"Fecha UTC\",\n        \"Fecha UTC\",\n    )\n\n    # targe fpca\n\n    functional_principal_components[\"Fecha UTC - 1D\"] = functional_principal_components[\n        \"Fecha UTC\"\n    ] - pd.Timedelta(days=1)\n\n    train_dataset = pd.merge(\n        train_dataset,\n        functional_principal_components.drop(\"Fecha UTC\", axis=1),\n        left_on=\"Fecha UTC\",\n        right_on=\"Fecha UTC - 1D\",\n        how=\"left\",\n        validate=\"many_to_one\",\n    )\n\n    test_dataset = pd.merge(\n        test_dataset,\n        functional_principal_components.drop(\"Fecha UTC\", axis=1),\n        left_on=\"Fecha UTC\",\n        right_on=\"Fecha UTC - 1D\",\n        how=\"left\",\n        validate=\"many_to_one\",\n    ).dropna()\n\n    functional_components_column_names = [\n        FPC_COLUMN_PATTERN.format(pc_number=i + 1) for i in range(N_PCA_COMPONENTS)\n    ]\n\n    X_train_dataset = train_dataset.drop(functional_components_column_names, axis=1)\n    y_train_dataset = train_dataset[functional_components_column_names]\n\n    X_test_dataset = test_dataset.drop(functional_components_column_names, axis=1)\n    y_test_dataset = test_dataset[functional_components_column_names]\n\n    return X_train_dataset, y_train_dataset, X_test_dataset, y_test_dataset\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\preprocess_batched_price_pca_as_target\\build_pca_price_as_target_dataset.py",
+  "parameters": {
+    "lags": [
+      {
+        "d": [
+          1
+        ]
+      }
+    ]
+  },
+  "run_command": "kedro run --to-nodes=build_batched_price_pca_as_target_dataset",
+  "inputs": [
+    "train_daily_info",
+    "test_daily_info",
+    "batched_price_input_data",
+    "fitted_price_fpca",
+    "price_batches",
+    "params:lags"
+  ],
+  "outputs": [
+    "X_train_batched_price_pca_as_target_dataset",
+    "y_train_batched_price_pca_as_target_dataset",
+    "X_test_batched_price_pca_as_target_dataset",
+    "y_test_batched_price_pca_as_target_dataset"
+  ]
+}

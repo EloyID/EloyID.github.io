@@ -1,0 +1,702 @@
+{
+  "nodes": [
+    {
+      "id": "1f7b3a99",
+      "name": "params:bid_type",
+      "tags": [
+        "train_model",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "90805783",
+      "name": "params:min_energy_cumsum_eval",
+      "tags": [
+        "model_reporting",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained",
+        "xgboost_monotonic",
+        "pca_target_regression"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "4fc42db9",
+      "name": "params:max_energy_cumsum_eval",
+      "tags": [
+        "model_reporting",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained",
+        "xgboost_monotonic",
+        "pca_target_regression"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "082a5865",
+      "name": "X_train_merged_input_data",
+      "tags": [
+        "model_reporting",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "3b90af80",
+      "name": "y_train_merged_input_data",
+      "tags": [
+        "train_model",
+        "model_reporting",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "2e8cef9a",
+      "name": "X_test_merged_input_data",
+      "tags": [
+        "model_reporting",
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "2b8928dc",
+      "name": "y_test_merged_input_data",
+      "tags": [
+        "model_reporting",
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "b920f4ee",
+      "name": "X_train_merged_input_data_preprocessed",
+      "tags": [
+        "train_model",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "bf783755",
+      "name": "column_transformer_merged_input_data",
+      "tags": [
+        "train_model",
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "342c4953",
+      "name": "train_xgboost_monotonic",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "parameters": {
+        "bid_type": "C",
+        "hyper_parameters_optimizer": "HalvingGridSearchCV"
+      }
+    },
+    {
+      "id": "9ddbfd88",
+      "name": "params:hyper_parameters_optimizer",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "b4db3f8c",
+      "name": "xgboost_monotonic.trained_xgboost_monotonic",
+      "tags": [
+        "train_model",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "8f969404",
+      "name": "xgboost_monotonic.y_train_merged_input_data_predicted",
+      "tags": [
+        "train_model",
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "662bc123",
+      "name": "xgboost_monotonic.train_dataset_metrics",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "e0b98d8a",
+      "name": "test_xgboost_monotonic",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "0d07ade9",
+      "name": "xgboost_monotonic.y_test_merged_input_data_predicted",
+      "tags": [
+        "model_reporting",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "4e4a93e4",
+      "name": "xgboost_monotonic.test_dataset_metrics",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "eacecf41",
+      "name": "xgboost_monotonic_reporting",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_monotonic"
+      ],
+      "parameters": {
+        "min_energy_cumsum_eval": 5000,
+        "max_energy_cumsum_eval": 30000
+      }
+    },
+    {
+      "id": "450966cb",
+      "name": "xgboost_monotonic_reporting_plots",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "xgboost_monotonic",
+      "name": "xgboost_monotonic",
+      "tags": [],
+      "pipelines": [
+        "xgboost_monotonic"
+      ],
+      "type": "modularPipeline",
+      "modular_pipelines": null,
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "eacecf41",
+      "target": "450966cb"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "xgboost_monotonic",
+      "target": "4e4a93e4"
+    },
+    {
+      "source": "bf783755",
+      "target": "e0b98d8a"
+    },
+    {
+      "source": "90805783",
+      "target": "eacecf41"
+    },
+    {
+      "source": "8f969404",
+      "target": "eacecf41"
+    },
+    {
+      "source": "342c4953",
+      "target": "8f969404"
+    },
+    {
+      "source": "1f7b3a99",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "bf783755",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "3b90af80",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "342c4953",
+      "target": "b4db3f8c"
+    },
+    {
+      "source": "0d07ade9",
+      "target": "eacecf41"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "eacecf41"
+    },
+    {
+      "source": "1f7b3a99",
+      "target": "342c4953"
+    },
+    {
+      "source": "bf783755",
+      "target": "342c4953"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "9ddbfd88",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "3b90af80",
+      "target": "342c4953"
+    },
+    {
+      "source": "3b90af80",
+      "target": "eacecf41"
+    },
+    {
+      "source": "342c4953",
+      "target": "662bc123"
+    },
+    {
+      "source": "9ddbfd88",
+      "target": "342c4953"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "e0b98d8a"
+    },
+    {
+      "source": "082a5865",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "eacecf41"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "b920f4ee",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "xgboost_monotonic",
+      "target": "662bc123"
+    },
+    {
+      "source": "e0b98d8a",
+      "target": "0d07ade9"
+    },
+    {
+      "source": "90805783",
+      "target": "xgboost_monotonic"
+    },
+    {
+      "source": "xgboost_monotonic",
+      "target": "450966cb"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "eacecf41"
+    },
+    {
+      "source": "082a5865",
+      "target": "eacecf41"
+    },
+    {
+      "source": "b4db3f8c",
+      "target": "e0b98d8a"
+    },
+    {
+      "source": "e0b98d8a",
+      "target": "4e4a93e4"
+    },
+    {
+      "source": "b920f4ee",
+      "target": "342c4953"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "e0b98d8a"
+    }
+  ],
+  "layers": [
+    "database_extractions",
+    "model_output",
+    "models",
+    "primary",
+    "primary_train_test_split",
+    "raw",
+    "train_data",
+    "reporting"
+  ],
+  "tags": [
+    {
+      "id": "fit_pca",
+      "name": "fit_pca"
+    },
+    {
+      "id": "intermediate_reporting",
+      "name": "intermediate_reporting"
+    },
+    {
+      "id": "model_reporting",
+      "name": "model_reporting"
+    },
+    {
+      "id": "preprocess_input_data",
+      "name": "preprocess_input_data"
+    },
+    {
+      "id": "primary_data_to_input_data",
+      "name": "primary_data_to_input_data"
+    },
+    {
+      "id": "raw_data_extraction_to_db",
+      "name": "raw_data_extraction_to_db"
+    },
+    {
+      "id": "raw_data_to_primary_data",
+      "name": "raw_data_to_primary_data"
+    },
+    {
+      "id": "test_model",
+      "name": "test_model"
+    },
+    {
+      "id": "train_model",
+      "name": "train_model"
+    },
+    {
+      "id": "train_test_split",
+      "name": "train_test_split"
+    }
+  ],
+  "pipelines": [
+    {
+      "id": "__default__",
+      "name": "__default__"
+    },
+    {
+      "id": "extract_data_to_parquet",
+      "name": "extract_data_to_parquet"
+    },
+    {
+      "id": "pca_target_regression",
+      "name": "pca_target_regression"
+    },
+    {
+      "id": "xgboost_unconstrained",
+      "name": "xgboost_unconstrained"
+    },
+    {
+      "id": "xgboost_monotonic",
+      "name": "xgboost_monotonic"
+    },
+    {
+      "id": "price_pca_target_regression_pipeline",
+      "name": "price_pca_target_regression_pipeline"
+    }
+  ],
+  "modular_pipelines": {
+    "__root__": {
+      "id": "__root__",
+      "name": "__root__",
+      "inputs": [],
+      "outputs": [],
+      "children": [
+        {
+          "id": "90805783",
+          "type": "parameters"
+        },
+        {
+          "id": "082a5865",
+          "type": "data"
+        },
+        {
+          "id": "4fc42db9",
+          "type": "parameters"
+        },
+        {
+          "id": "450966cb",
+          "type": "data"
+        },
+        {
+          "id": "1f7b3a99",
+          "type": "parameters"
+        },
+        {
+          "id": "9ddbfd88",
+          "type": "parameters"
+        },
+        {
+          "id": "bf783755",
+          "type": "data"
+        },
+        {
+          "id": "2b8928dc",
+          "type": "data"
+        },
+        {
+          "id": "xgboost_monotonic",
+          "type": "modularPipeline"
+        },
+        {
+          "id": "3b90af80",
+          "type": "data"
+        },
+        {
+          "id": "b920f4ee",
+          "type": "data"
+        },
+        {
+          "id": "2e8cef9a",
+          "type": "data"
+        }
+      ]
+    },
+    "xgboost_monotonic": {
+      "id": "xgboost_monotonic",
+      "name": "xgboost_monotonic",
+      "inputs": [
+        "1f7b3a99",
+        "3b90af80",
+        "082a5865",
+        "4fc42db9",
+        "2e8cef9a",
+        "2b8928dc",
+        "9ddbfd88",
+        "bf783755",
+        "90805783",
+        "b920f4ee"
+      ],
+      "outputs": [
+        "4e4a93e4",
+        "662bc123",
+        "450966cb"
+      ],
+      "children": [
+        {
+          "id": "662bc123",
+          "type": "data"
+        },
+        {
+          "id": "8f969404",
+          "type": "data"
+        },
+        {
+          "id": "e0b98d8a",
+          "type": "task"
+        },
+        {
+          "id": "eacecf41",
+          "type": "task"
+        },
+        {
+          "id": "342c4953",
+          "type": "task"
+        },
+        {
+          "id": "b4db3f8c",
+          "type": "data"
+        },
+        {
+          "id": "0d07ade9",
+          "type": "data"
+        },
+        {
+          "id": "4e4a93e4",
+          "type": "data"
+        }
+      ]
+    }
+  },
+  "selected_pipeline": "xgboost_monotonic"
+}

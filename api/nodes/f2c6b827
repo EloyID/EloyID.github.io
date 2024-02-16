@@ -1,0 +1,20 @@
+{
+  "code": "def train_pca_target_regression(\n    X_train_dataset_preprocessed,\n    y_train_batched_energy_pca_as_target_dataset,\n    fitted_fpca,\n    X_train_batched_energy_pca_as_target_dataset,\n    X_train_dataset,\n    y_train_dataset,\n):\n\n    regressor = LinearRegression()\n\n    regressor.fit(\n        X_train_dataset_preprocessed, y_train_batched_energy_pca_as_target_dataset\n    )\n\n    y_train_dataset_predicted = regressor.predict(X_train_dataset_preprocessed)\n\n    y_train_batched_energy_pca_as_target_dataset_predicted_reconstructed = (\n        reconstruct_data_from_pcas(\n            fitted_fpca,\n            X_train_batched_energy_pca_as_target_dataset,\n            y_train_dataset_predicted,\n            X_train_dataset,\n        )\n    )\n\n    metrics = calculate_metrics(\n        y_train_dataset,\n        y_train_batched_energy_pca_as_target_dataset_predicted_reconstructed,\n    )\n\n    return (\n        regressor,\n        y_train_dataset_predicted,\n        y_train_batched_energy_pca_as_target_dataset_predicted_reconstructed,\n        metrics,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_pca_target_regression\\train_pca_target_regression.py",
+  "parameters": {},
+  "run_command": "kedro run --to-nodes=pca_target_regression.train_pca_target_regression",
+  "inputs": [
+    "X_train_batched_energy_pca_as_target_dataset_preprocessed",
+    "y_train_batched_energy_pca_as_target_dataset",
+    "fitted_fpca",
+    "X_train_batched_energy_pca_as_target_dataset",
+    "X_train_dataset",
+    "y_train_dataset"
+  ],
+  "outputs": [
+    "pca_target_regression.trained_pca_target_regression",
+    "pca_target_regression.y_train_pca_target_regression_dataset_predicted",
+    "pca_target_regression.y_train_pca_target_regression_dataset_predicted_reconstructed",
+    "pca_target_regression.train_dataset_metrics"
+  ]
+}

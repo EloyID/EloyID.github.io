@@ -1,0 +1,27 @@
+{
+  "code": "def preprocess_merged_input_data(\n    train_merged_input_data, test_merged_input_data, optional_explanatory_variables\n):\n    X_train_merged_input_data = train_merged_input_data.drop(\n        [\"Precio Compra/Venta\"], axis=1\n    )\n    y_train_merged_input_data = train_merged_input_data[\"Precio Compra/Venta\"]\n\n    X_test_merged_input_data = test_merged_input_data.drop(\n        [\"Precio Compra/Venta\"], axis=1\n    )\n    y_test_merged_input_data = test_merged_input_data[\"Precio Compra/Venta\"]\n\n    optional_numerical_columns, optional_categorical_columns = (\n        get_optional_explanatory_variables(optional_explanatory_variables)\n    )\n\n    numerical_columns = [\n        *optional_numerical_columns,\n        \"Energía Compra/Venta Acumulada\",\n    ]\n    categorical_columns = optional_categorical_columns\n\n    # create a pipeline for the categorical columns and the numerical columns\n    categorical_pipeline = Pipeline(\n        [\n            (\"one_hot_encoder\", OneHotEncoder(handle_unknown=\"ignore\")),\n        ]\n    )\n    numerical_pipeline = Pipeline(\n        [\n            (\"scaler\", StandardScaler()),\n        ]\n    )\n\n    # create a column transformer for the categorical and numerical pipelines\n    column_transformer = ColumnTransformer(\n        [\n            (\"categorical_pipeline\", categorical_pipeline, categorical_columns),\n            (\"numerical_pipeline\", numerical_pipeline, numerical_columns),\n        ]\n    )\n\n    X_train_merged_input_data_preprocessed = column_transformer.fit_transform(\n        X_train_merged_input_data.drop(\n            [\n                \"Fecha UTC\",\n            ],\n            axis=1,\n        )\n    )\n\n    X_test_merged_input_data_preprocessed = column_transformer.transform(\n        X_test_merged_input_data.drop(\n            [\n                \"Fecha UTC\",\n            ],\n            axis=1,\n        )\n    )\n\n    return (\n        X_train_merged_input_data,\n        y_train_merged_input_data,\n        X_test_merged_input_data,\n        y_test_merged_input_data,\n        X_train_merged_input_data_preprocessed,\n        X_test_merged_input_data_preprocessed,\n        column_transformer,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_monotonic\\preprocess_merged_input_data.py",
+  "parameters": {
+    "optional_explanatory_variables": [
+      "Hora",
+      "Día de la semana",
+      "Predicción eólica",
+      "Predicción demanda"
+    ]
+  },
+  "run_command": "kedro run --to-nodes=preprocess_merged_input_data",
+  "inputs": [
+    "train_merged_input_data",
+    "test_merged_input_data",
+    "params:optional_explanatory_variables"
+  ],
+  "outputs": [
+    "X_train_merged_input_data",
+    "y_train_merged_input_data",
+    "X_test_merged_input_data",
+    "y_test_merged_input_data",
+    "X_train_merged_input_data_preprocessed",
+    "X_test_merged_input_data_preprocessed",
+    "column_transformer_merged_input_data"
+  ]
+}

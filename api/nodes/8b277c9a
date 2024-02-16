@@ -1,0 +1,23 @@
+{
+  "code": "def manage_raw_solar_data(\n    start_date,\n    end_date,\n    database_config,\n):\n    return manage_sios_data(start_date, end_date, database_config, SOLAR)\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\raw_data_extraction\\manage_raw_wind_data.py",
+  "parameters": {
+    "start_date": "2024-01-20",
+    "end_date": "2024-01-31",
+    "database_config": {
+      "database": "energy-market-forecast",
+      "user": "root",
+      "password": "3loy3loy",
+      "host": "127.0.0.1"
+    }
+  },
+  "run_command": "kedro run --to-nodes=manage_raw_solar_data",
+  "inputs": [
+    "params:start_date",
+    "params:end_date",
+    "params:database_config"
+  ],
+  "outputs": [
+    "raw_solar_data"
+  ]
+}

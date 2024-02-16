@@ -1,0 +1,14 @@
+{
+  "code": "def data_pca(batched_raw_train_dataset, batches):\n    pivotted_batched_input_data = batched_raw_train_dataset.pivot_table(\n        index=\"Fecha UTC\",\n        columns=\"Energía Compra/Venta Acumulada\",\n        values=\"Precio Compra/Venta\",\n        aggfunc=\"first\",\n    )\n\n    fd = skfda.FDataGrid(\n        data_matrix=pivotted_batched_input_data.values,\n        grid_points=batches,\n    )\n    fd.plot()\n    plt.title(\"Curves used to fit the energy batched FPCA model\")\n    plt.xlabel(\"Energía Compra/Venta Acumulada\")\n    plt.ylabel(\"Precio Compra/Venta\")\n\n    fitted_fpca = FPCA(n_components=N_PCA_COMPONENTS)\n    fitted_fpca.fit(fd)\n\n    return fitted_fpca, plt\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_monotonic_pca\\data_pca.py",
+  "parameters": {},
+  "run_command": "kedro run --to-nodes=data_pca",
+  "inputs": [
+    "batched_raw_train_dataset",
+    "batches"
+  ],
+  "outputs": [
+    "fitted_fpca",
+    "data_pca_plot"
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "nodes": [
+    {
+      "id": "1d093338",
+      "name": "params:database_config",
+      "tags": [
+        "intermediate_reporting",
+        "raw_data_extraction_to_db",
+        "raw_data_to_primary_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "extract_data_to_parquet"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "2103d537",
+      "name": "extract_databases_to_parquet",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "extract_data_to_parquet"
+      ],
+      "type": "task",
+      "modular_pipelines": [],
+      "parameters": {
+        "database_config": {
+          "database": "energy-market-forecast",
+          "user": "root",
+          "password": "3loy3loy",
+          "host": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "id": "70a0ec8f",
+      "name": "merged_input_data_extract",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "extract_data_to_parquet"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "database_extractions",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "5990cf4e",
+      "name": "batched_input_data_extract",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "extract_data_to_parquet"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "database_extractions",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "d10bcd4f",
+      "name": "daily_info_extract",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "extract_data_to_parquet"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "database_extractions",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "c70f4be8",
+      "name": "raw_pbc_extract",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "extract_data_to_parquet"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "database_extractions",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "2c1c964b",
+      "name": "raw_solar_extract",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "extract_data_to_parquet"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "database_extractions",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "da0af57c",
+      "name": "raw_wind_extract",
+      "tags": [
+        "intermediate_reporting"
+      ],
+      "pipelines": [
+        "extract_data_to_parquet"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "database_extractions",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "2103d537",
+      "target": "2c1c964b"
+    },
+    {
+      "source": "2103d537",
+      "target": "70a0ec8f"
+    },
+    {
+      "source": "1d093338",
+      "target": "2103d537"
+    },
+    {
+      "source": "2103d537",
+      "target": "d10bcd4f"
+    },
+    {
+      "source": "2103d537",
+      "target": "5990cf4e"
+    },
+    {
+      "source": "2103d537",
+      "target": "da0af57c"
+    },
+    {
+      "source": "2103d537",
+      "target": "c70f4be8"
+    }
+  ],
+  "layers": [
+    "database_extractions",
+    "model_output",
+    "models",
+    "primary",
+    "primary_train_test_split",
+    "raw",
+    "reporting",
+    "train_data"
+  ],
+  "tags": [
+    {
+      "id": "fit_pca",
+      "name": "fit_pca"
+    },
+    {
+      "id": "intermediate_reporting",
+      "name": "intermediate_reporting"
+    },
+    {
+      "id": "model_reporting",
+      "name": "model_reporting"
+    },
+    {
+      "id": "preprocess_input_data",
+      "name": "preprocess_input_data"
+    },
+    {
+      "id": "primary_data_to_input_data",
+      "name": "primary_data_to_input_data"
+    },
+    {
+      "id": "raw_data_extraction_to_db",
+      "name": "raw_data_extraction_to_db"
+    },
+    {
+      "id": "raw_data_to_primary_data",
+      "name": "raw_data_to_primary_data"
+    },
+    {
+      "id": "test_model",
+      "name": "test_model"
+    },
+    {
+      "id": "train_model",
+      "name": "train_model"
+    },
+    {
+      "id": "train_test_split",
+      "name": "train_test_split"
+    }
+  ],
+  "pipelines": [
+    {
+      "id": "__default__",
+      "name": "__default__"
+    },
+    {
+      "id": "extract_data_to_parquet",
+      "name": "extract_data_to_parquet"
+    },
+    {
+      "id": "pca_target_regression",
+      "name": "pca_target_regression"
+    },
+    {
+      "id": "xgboost_unconstrained",
+      "name": "xgboost_unconstrained"
+    },
+    {
+      "id": "xgboost_monotonic",
+      "name": "xgboost_monotonic"
+    },
+    {
+      "id": "price_pca_target_regression_pipeline",
+      "name": "price_pca_target_regression_pipeline"
+    }
+  ],
+  "modular_pipelines": {
+    "__root__": {
+      "id": "__root__",
+      "name": "__root__",
+      "inputs": [],
+      "outputs": [],
+      "children": [
+        {
+          "id": "da0af57c",
+          "type": "data"
+        },
+        {
+          "id": "2c1c964b",
+          "type": "data"
+        },
+        {
+          "id": "c70f4be8",
+          "type": "data"
+        },
+        {
+          "id": "70a0ec8f",
+          "type": "data"
+        },
+        {
+          "id": "1d093338",
+          "type": "parameters"
+        },
+        {
+          "id": "5990cf4e",
+          "type": "data"
+        },
+        {
+          "id": "2103d537",
+          "type": "task"
+        },
+        {
+          "id": "d10bcd4f",
+          "type": "data"
+        }
+      ]
+    }
+  },
+  "selected_pipeline": "extract_data_to_parquet"
+}

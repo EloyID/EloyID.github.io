@@ -1,0 +1,23 @@
+{
+  "code": "def split_datasets(\n    merged_input_data, daily_info, min_energy_cumsum_eval, max_energy_cumsum_eval\n):\n    unique_dates = merged_input_data[\"Fecha UTC\"].unique()\n\n    (\n        train_dates,\n        test_dates,\n    ) = train_test_split(unique_dates, test_size=TEST_SIZE, shuffle=False)\n\n    train_merged_input_data = merged_input_data[\n        merged_input_data[\"Fecha UTC\"].isin(train_dates)\n    ]\n    test_merged_input_data = merged_input_data[\n        merged_input_data[\"Fecha UTC\"].isin(test_dates)\n    ]\n\n    test_merged_input_data = test_merged_input_data[\n        get_eval_mask(\n            test_merged_input_data,\n            min_energy_cumsum_eval,\n            max_energy_cumsum_eval,\n        )\n    ]\n\n    train_daily_info = daily_info[daily_info[\"Fecha UTC\"].isin(train_dates)]\n    test_daily_info = daily_info[daily_info[\"Fecha UTC\"].isin(test_dates)]\n\n    return (\n        train_dates,\n        test_dates,\n        train_merged_input_data,\n        test_merged_input_data,\n        train_daily_info,\n        test_daily_info,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\data_transformations\\split_datasets.py",
+  "parameters": {
+    "min_energy_cumsum_eval": 5000,
+    "max_energy_cumsum_eval": 30000
+  },
+  "run_command": "kedro run --to-nodes=split_datasets",
+  "inputs": [
+    "featured_merged_input_data",
+    "daily_info",
+    "params:min_energy_cumsum_eval",
+    "params:max_energy_cumsum_eval"
+  ],
+  "outputs": [
+    "train_dates",
+    "test_dates",
+    "train_merged_input_data",
+    "test_merged_input_data",
+    "train_daily_info",
+    "test_daily_info"
+  ]
+}

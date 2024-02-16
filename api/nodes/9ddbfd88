@@ -1,0 +1,5 @@
+{
+  "parameters": {
+    "hyper_parameters_optimizer": "HalvingGridSearchCV"
+  }
+}

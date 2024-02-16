@@ -1,0 +1,10 @@
+{
+  "parameters": {
+    "optional_explanatory_variables": [
+      "Hora",
+      "Día de la semana",
+      "Predicción eólica",
+      "Predicción demanda"
+    ]
+  }
+}

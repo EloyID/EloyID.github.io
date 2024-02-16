@@ -1,0 +1,23 @@
+{
+  "code": "def train_xgboost_batched_energy_pca_as_target(\n    X_train_dataset_preprocessed,\n    y_train_batched_energy_pca_as_target_dataset,\n    fitted_fpca,\n    X_train_batched_energy_pca_as_target_dataset,\n    X_train_dataset,\n    y_train_dataset,\n    hyper_parameters_optimizer,\n):\n    xgbm = XGBRegressor(\n        objective=\"reg:squarederror\",\n        seed=2022,\n    )\n\n    ModelSelector = MODEL_SELECTORS[hyper_parameters_optimizer]\n    model_selector = ModelSelector(xgbm, **HYPER_PARAMETER_OPTIMIZER_ARGS)\n    model_search = model_selector.fit(\n        X_train_dataset_preprocessed, y_train_batched_energy_pca_as_target_dataset\n    )\n\n    logger.info(f\"Best parameters found: {model_search.best_params_}\")\n\n    best_estimator = model_search.best_estimator_\n    y_train_batched_energy_pca_as_target_dataset_predicted = best_estimator.predict(\n        X_train_dataset_preprocessed\n    )\n\n    y_train_batched_energy_pca_as_target_dataset_predicted_reconstructed = (\n        reconstruct_data_from_pcas(\n            fitted_fpca,\n            X_train_batched_energy_pca_as_target_dataset,\n            y_train_batched_energy_pca_as_target_dataset_predicted,\n            X_train_dataset,\n        )\n    )\n\n    metrics = calculate_metrics(\n        y_train_dataset,\n        y_train_batched_energy_pca_as_target_dataset_predicted_reconstructed,\n    )\n\n    return (\n        best_estimator,\n        y_train_batched_energy_pca_as_target_dataset_predicted,\n        y_train_batched_energy_pca_as_target_dataset_predicted_reconstructed,\n        metrics,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_pca_energy_as_target\\train_xgboost_batched_energy_pca_as_target.py",
+  "parameters": {
+    "hyper_parameters_optimizer": "HalvingGridSearchCV"
+  },
+  "run_command": "kedro run --to-nodes=train_xgboost_batched_energy_pca_as_target",
+  "inputs": [
+    "X_train_batched_energy_pca_as_target_dataset_preprocessed",
+    "y_train_batched_energy_pca_as_target_dataset",
+    "fitted_fpca",
+    "X_train_batched_energy_pca_as_target_dataset",
+    "X_train_dataset",
+    "y_train_dataset",
+    "params:hyper_parameters_optimizer"
+  ],
+  "outputs": [
+    "trained_xgboost_batched_energy_pca_as_target",
+    "y_train_batched_energy_pca_as_target_dataset_predicted",
+    "y_train_batched_energy_pca_as_target_dataset_predicted_reconstructed",
+    "xgboost_batched_energy_pca_as_target_train_dataset_metrics"
+  ]
+}

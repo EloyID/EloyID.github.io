@@ -1,0 +1,10 @@
+{
+  "parameters": {
+    "database_config": {
+      "database": "energy-market-forecast",
+      "user": "root",
+      "password": "3loy3loy",
+      "host": "127.0.0.1"
+    }
+  }
+}

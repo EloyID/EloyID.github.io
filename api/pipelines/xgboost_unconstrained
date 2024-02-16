@@ -1,0 +1,667 @@
+{
+  "nodes": [
+    {
+      "id": "90805783",
+      "name": "params:min_energy_cumsum_eval",
+      "tags": [
+        "model_reporting",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained",
+        "xgboost_monotonic",
+        "pca_target_regression"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "4fc42db9",
+      "name": "params:max_energy_cumsum_eval",
+      "tags": [
+        "model_reporting",
+        "train_test_split"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained",
+        "xgboost_monotonic",
+        "pca_target_regression"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "082a5865",
+      "name": "X_train_merged_input_data",
+      "tags": [
+        "model_reporting",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "3b90af80",
+      "name": "y_train_merged_input_data",
+      "tags": [
+        "train_model",
+        "model_reporting",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "2e8cef9a",
+      "name": "X_test_merged_input_data",
+      "tags": [
+        "model_reporting",
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pandas.parquet_dataset.ParquetDataset",
+      "stats": null
+    },
+    {
+      "id": "2b8928dc",
+      "name": "y_test_merged_input_data",
+      "tags": [
+        "model_reporting",
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "b920f4ee",
+      "name": "X_train_merged_input_data_preprocessed",
+      "tags": [
+        "train_model",
+        "preprocess_input_data"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "train_data",
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "bf783755",
+      "name": "column_transformer_merged_input_data",
+      "tags": [
+        "train_model",
+        "preprocess_input_data",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": "pickle.pickle_dataset.PickleDataset",
+      "stats": null
+    },
+    {
+      "id": "9ddbfd88",
+      "name": "params:hyper_parameters_optimizer",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_monotonic",
+        "xgboost_unconstrained"
+      ],
+      "type": "parameters",
+      "modular_pipelines": [],
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    },
+    {
+      "id": "6481a513",
+      "name": "train_xgboost_unconstrained",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "parameters": {
+        "hyper_parameters_optimizer": "HalvingGridSearchCV"
+      }
+    },
+    {
+      "id": "cb2641d2",
+      "name": "xgboost_unconstrained.trained_xgboost_unconstrained",
+      "tags": [
+        "train_model",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "e2a443ea",
+      "name": "xgboost_unconstrained.y_train_xgboost_unconstrained_predicted",
+      "tags": [
+        "train_model",
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "9563680a",
+      "name": "xgboost_unconstrained.train_dataset_metrics#outputs",
+      "tags": [
+        "train_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "d652089e",
+      "name": "test_xgboost_unconstrained",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "7e106842",
+      "name": "xgboost_unconstrained.y_test_xgboost_unconstrained_predicted",
+      "tags": [
+        "model_reporting",
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "layer": null,
+      "dataset_type": "io.memory_dataset.MemoryDataset",
+      "stats": null
+    },
+    {
+      "id": "fee318a7",
+      "name": "xgboost_unconstrained.test_dataset_metrics",
+      "tags": [
+        "test_model"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "layer": null,
+      "dataset_type": "tracking.metrics_dataset.MetricsDataset",
+      "stats": null
+    },
+    {
+      "id": "a877d89b",
+      "name": "xgboost_unconstrained_reporting",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "task",
+      "modular_pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "parameters": {
+        "min_energy_cumsum_eval": 5000,
+        "max_energy_cumsum_eval": 30000
+      }
+    },
+    {
+      "id": "cb3dee3d",
+      "name": "xgboost_unconstrained_reporting_plots",
+      "tags": [
+        "model_reporting"
+      ],
+      "pipelines": [
+        "__default__",
+        "xgboost_unconstrained"
+      ],
+      "type": "data",
+      "modular_pipelines": [],
+      "layer": "reporting",
+      "dataset_type": "matplotlib.matplotlib_writer.MatplotlibWriter",
+      "stats": null
+    },
+    {
+      "id": "xgboost_unconstrained",
+      "name": "xgboost_unconstrained",
+      "tags": [],
+      "pipelines": [
+        "xgboost_unconstrained"
+      ],
+      "type": "modularPipeline",
+      "modular_pipelines": null,
+      "layer": null,
+      "dataset_type": null,
+      "stats": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "d652089e",
+      "target": "fee318a7"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "a877d89b"
+    },
+    {
+      "source": "082a5865",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "6481a513",
+      "target": "e2a443ea"
+    },
+    {
+      "source": "b920f4ee",
+      "target": "6481a513"
+    },
+    {
+      "source": "6481a513",
+      "target": "9563680a"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "b920f4ee",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "a877d89b",
+      "target": "cb3dee3d"
+    },
+    {
+      "source": "xgboost_unconstrained",
+      "target": "fee318a7"
+    },
+    {
+      "source": "082a5865",
+      "target": "a877d89b"
+    },
+    {
+      "source": "90805783",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "cb2641d2",
+      "target": "d652089e"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "a877d89b"
+    },
+    {
+      "source": "2b8928dc",
+      "target": "d652089e"
+    },
+    {
+      "source": "d652089e",
+      "target": "7e106842"
+    },
+    {
+      "source": "90805783",
+      "target": "a877d89b"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "e2a443ea",
+      "target": "a877d89b"
+    },
+    {
+      "source": "xgboost_unconstrained",
+      "target": "cb3dee3d"
+    },
+    {
+      "source": "3b90af80",
+      "target": "6481a513"
+    },
+    {
+      "source": "bf783755",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "xgboost_unconstrained",
+      "target": "9563680a"
+    },
+    {
+      "source": "7e106842",
+      "target": "a877d89b"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "a877d89b"
+    },
+    {
+      "source": "3b90af80",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "2e8cef9a",
+      "target": "d652089e"
+    },
+    {
+      "source": "6481a513",
+      "target": "cb2641d2"
+    },
+    {
+      "source": "3b90af80",
+      "target": "a877d89b"
+    },
+    {
+      "source": "9ddbfd88",
+      "target": "6481a513"
+    },
+    {
+      "source": "4fc42db9",
+      "target": "xgboost_unconstrained"
+    },
+    {
+      "source": "bf783755",
+      "target": "d652089e"
+    },
+    {
+      "source": "9ddbfd88",
+      "target": "xgboost_unconstrained"
+    }
+  ],
+  "layers": [
+    "database_extractions",
+    "model_output",
+    "models",
+    "primary",
+    "primary_train_test_split",
+    "raw",
+    "train_data",
+    "reporting"
+  ],
+  "tags": [
+    {
+      "id": "fit_pca",
+      "name": "fit_pca"
+    },
+    {
+      "id": "intermediate_reporting",
+      "name": "intermediate_reporting"
+    },
+    {
+      "id": "model_reporting",
+      "name": "model_reporting"
+    },
+    {
+      "id": "preprocess_input_data",
+      "name": "preprocess_input_data"
+    },
+    {
+      "id": "primary_data_to_input_data",
+      "name": "primary_data_to_input_data"
+    },
+    {
+      "id": "raw_data_extraction_to_db",
+      "name": "raw_data_extraction_to_db"
+    },
+    {
+      "id": "raw_data_to_primary_data",
+      "name": "raw_data_to_primary_data"
+    },
+    {
+      "id": "test_model",
+      "name": "test_model"
+    },
+    {
+      "id": "train_model",
+      "name": "train_model"
+    },
+    {
+      "id": "train_test_split",
+      "name": "train_test_split"
+    }
+  ],
+  "pipelines": [
+    {
+      "id": "__default__",
+      "name": "__default__"
+    },
+    {
+      "id": "extract_data_to_parquet",
+      "name": "extract_data_to_parquet"
+    },
+    {
+      "id": "pca_target_regression",
+      "name": "pca_target_regression"
+    },
+    {
+      "id": "xgboost_unconstrained",
+      "name": "xgboost_unconstrained"
+    },
+    {
+      "id": "xgboost_monotonic",
+      "name": "xgboost_monotonic"
+    },
+    {
+      "id": "price_pca_target_regression_pipeline",
+      "name": "price_pca_target_regression_pipeline"
+    }
+  ],
+  "modular_pipelines": {
+    "__root__": {
+      "id": "__root__",
+      "name": "__root__",
+      "inputs": [],
+      "outputs": [],
+      "children": [
+        {
+          "id": "xgboost_unconstrained",
+          "type": "modularPipeline"
+        },
+        {
+          "id": "90805783",
+          "type": "parameters"
+        },
+        {
+          "id": "082a5865",
+          "type": "data"
+        },
+        {
+          "id": "4fc42db9",
+          "type": "parameters"
+        },
+        {
+          "id": "9ddbfd88",
+          "type": "parameters"
+        },
+        {
+          "id": "bf783755",
+          "type": "data"
+        },
+        {
+          "id": "2b8928dc",
+          "type": "data"
+        },
+        {
+          "id": "3b90af80",
+          "type": "data"
+        },
+        {
+          "id": "cb3dee3d",
+          "type": "data"
+        },
+        {
+          "id": "b920f4ee",
+          "type": "data"
+        },
+        {
+          "id": "2e8cef9a",
+          "type": "data"
+        }
+      ]
+    },
+    "xgboost_unconstrained": {
+      "id": "xgboost_unconstrained",
+      "name": "xgboost_unconstrained",
+      "inputs": [
+        "3b90af80",
+        "082a5865",
+        "4fc42db9",
+        "2e8cef9a",
+        "2b8928dc",
+        "9ddbfd88",
+        "bf783755",
+        "90805783",
+        "b920f4ee"
+      ],
+      "outputs": [
+        "9563680a",
+        "cb3dee3d",
+        "fee318a7"
+      ],
+      "children": [
+        {
+          "id": "7e106842",
+          "type": "data"
+        },
+        {
+          "id": "d652089e",
+          "type": "task"
+        },
+        {
+          "id": "6481a513",
+          "type": "task"
+        },
+        {
+          "id": "cb2641d2",
+          "type": "data"
+        },
+        {
+          "id": "e2a443ea",
+          "type": "data"
+        },
+        {
+          "id": "9563680a",
+          "type": "data"
+        },
+        {
+          "id": "fee318a7",
+          "type": "data"
+        },
+        {
+          "id": "a877d89b",
+          "type": "task"
+        }
+      ]
+    }
+  },
+  "selected_pipeline": "xgboost_unconstrained"
+}

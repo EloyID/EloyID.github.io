@@ -1,0 +1,16 @@
+{
+  "code": "def test_xgboost_price_pca_monotonic(\n    trained_xgboost_price_pca_monotonic,\n    X_test_price_pca_dataset,\n    X_test_price_pca_dataset_preprocessed,\n    y_test_price_pca_dataset,\n):\n    y_test_price_pca_dataset_predicted = trained_xgboost_price_pca_monotonic.predict(\n        X_test_price_pca_dataset_preprocessed\n    )\n\n    test_price_inferred = infer_price_from_energy(\n        X_test_price_pca_dataset,\n        y_test_price_pca_dataset,\n        y_test_price_pca_dataset_predicted,\n    )\n    metrics = calculate_metrics(y_test_price_pca_dataset, test_price_inferred)\n\n    return y_test_price_pca_dataset_predicted, metrics\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_monotonic_price_pca\\test_xgboost_price_pca_monotonic.py",
+  "parameters": {},
+  "run_command": "kedro run --to-nodes=test_xgboost_price_pca_monotonic",
+  "inputs": [
+    "trained_xgboost_price_pca_monotonic",
+    "X_test_price_pca_dataset",
+    "X_test_price_pca_dataset_preprocessed",
+    "y_test_price_pca_dataset"
+  ],
+  "outputs": [
+    "y_test_price_pca_dataset_predicted",
+    "xgboost_price_pca_monotonic_test_dataset_metrics"
+  ]
+}

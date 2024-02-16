@@ -1,0 +1,13 @@
+{
+  "code": "def create_batched_input_data_table_plot(batched_input_data, merged_input_data):\n    # Create a plot with two subplots\n    fig, axs = plt.subplots(2, figsize=(10, 10))\n\n    # First subplot\n    example_dates = batched_input_data[\"Fecha UTC\"].unique()[:3]\n    example_batched_input_data = batched_input_data[\n        batched_input_data[\"Fecha UTC\"].isin(example_dates)\n    ]\n\n    for (date1, group1), (date2, group2) in zip(\n        example_batched_input_data.groupby(\"Fecha UTC\"),\n        merged_input_data.groupby(\"Fecha UTC\"),\n    ):\n        group1.sort_values(\"Energía Compra/Venta Acumulada\").plot(\n            \"Energía Compra/Venta Acumulada\",\n            \"Precio Compra/Venta\",\n            ax=axs[0],\n            legend=False,\n            linewidth=0.5,\n        )\n\n        group2.sort_values(\"Energía Compra/Venta Acumulada\").plot(\n            \"Energía Compra/Venta Acumulada\",\n            \"Precio Compra/Venta\",\n            ax=axs[0],\n            legend=False,\n            linewidth=0.5,\n            linestyle=\"dashed\",\n        )\n    axs[0].legend([\"Batched\", \"Original\"])\n\n    axs[0].set_title(\n        \"Examples of batched Energía Compra/Venta Acumulada vs Precio Compra/Venta\"\n    )\n\n    for date, group in batched_input_data.groupby(\"Fecha UTC\"):\n        group.sort_values(\"Energía Compra/Venta Acumulada\").plot(\n            \"Energía Compra/Venta Acumulada\",\n            \"Precio Compra/Venta\",\n            ax=axs[1],\n            legend=False,\n            linewidth=0.5,\n        )\n    axs[1].set_title(\"Batched Energía Compra/Venta Acumulada vs Precio Compra/Venta\")\n\n    return plt\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\reporting\\create_batched_input_data_table_plot.py",
+  "parameters": {},
+  "run_command": "kedro run --to-nodes=create_batched_input_data_table_plot",
+  "inputs": [
+    "batched_input_data",
+    "featured_merged_input_data"
+  ],
+  "outputs": [
+    "create_batched_input_data_table_plots"
+  ]
+}

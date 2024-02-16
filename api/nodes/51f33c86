@@ -1,0 +1,22 @@
+{
+  "code": "def xgboost_monotonic_pca_reporting(\n    X_train,\n    y_train,\n    y_train_pred,\n    X_test,\n    y_test,\n    y_test_pred,\n    min_energy_cumsum_eval,\n    max_energy_cumsum_eval,\n):\n    return xgboost_monotonic_reporting(\n        \"XGBoost Monotonic PCA\",\n        X_train,\n        y_train,\n        y_train_pred,\n        X_test,\n        y_test,\n        y_test_pred,\n        min_energy_cumsum_eval,\n        max_energy_cumsum_eval,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_monotonic_pca\\xgboost_monotonic_reporting.py",
+  "parameters": {
+    "min_energy_cumsum_eval": 5000,
+    "max_energy_cumsum_eval": 30000
+  },
+  "run_command": "kedro run --to-nodes=xgboost_monotonic_pca_reporting",
+  "inputs": [
+    "X_train_dataset",
+    "y_train_dataset",
+    "y_train_dataset_predicted",
+    "X_test_dataset",
+    "y_test_dataset",
+    "y_test_dataset_predicted",
+    "params:min_energy_cumsum_eval",
+    "params:max_energy_cumsum_eval"
+  ],
+  "outputs": [
+    "xgboost_monotonic_pca_reporting_plots"
+  ]
+}

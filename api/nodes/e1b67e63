@@ -1,0 +1,33 @@
+{
+  "code": "def create_batched_input_data_table(\n    featured_merged_input_data,\n    start_date,\n    end_date,\n    bid_type,\n    batch_size,\n    min_energy_cumsum,\n    max_energy_cumsum,\n    database_config,\n):\n    # wandb.init(project=\"iit-energy-prediction\")\n    # wandb.log({\"batch_size\": batch_size})\n\n    # Create a connection to the database\n    connection = create_batched_input_data_connection(database_config)\n    cursor = connection.cursor()\n    database_uri = get_database_uri(database_config)\n    engine = sqlalchemy.create_engine(database_uri)\n\n    batches = np.arange(min_energy_cumsum, max_energy_cumsum + batch_size, batch_size)\n\n    # Get the unique 'Fecha UTC' values\n    cursor.execute(\n        f\"SELECT DISTINCT `Fecha UTC` FROM merged_input_data WHERE `Tipo Oferta` = '{bid_type}' \"\n    )\n    available_dates = cursor.fetchall()\n\n    # Get the calculated 'Fecha UTC' values\n    cursor.execute(\n        f\"SELECT DISTINCT `Fecha UTC` FROM batched_input_data WHERE `Tipo Oferta` = '{bid_type}'\"\n    )\n    calculated_dates = cursor.fetchall()\n\n    # Get the calculated 'Fecha UTC' values\n    cursor.execute(\n        f\"SELECT DISTINCT `Energía Compra/Venta Acumulada` FROM batched_input_data WHERE `Tipo Oferta` = '{bid_type}'\"\n    )\n    calculated_energy_cumsum = cursor.fetchall()\n    calculated_energy_cumsum = [x[0] for x in calculated_energy_cumsum]\n\n    not_calculated_batches = list(set(batches) - set(calculated_energy_cumsum))\n    not_calculated_batches.sort()\n    # Process the calculated dates with existing batches not matching the new batches\n    if len(not_calculated_batches) != 0:\n        for date in calculated_dates:\n            date = date[0]\n            # Download the data for the date into a pandas DataFrame\n\n            interpolate_and_insert(\n                x=not_calculated_batches,\n                x_p=\"Energía Compra/Venta Acumulada\",\n                fp=\"Precio Compra/Venta\",\n                from_database=\"merged_input_data\",\n                to_database=\"batched_input_data\",\n                date=date,\n                bid_type=bid_type,\n                engine=engine,\n            )\n\n    # Process the dates that are not at all in the table\n    not_calculated_dates = list(set(available_dates) - set(calculated_dates))\n    for date in not_calculated_dates:\n        date = date[0]\n        # Download the data for the date into a pandas DataFrame\n        interpolate_and_insert(\n            x=batches,\n            x_p=\"Energía Compra/Venta Acumulada\",\n            fp=\"Precio Compra/Venta\",\n            from_database=\"merged_input_data\",\n            to_database=\"batched_input_data\",\n            date=date,\n            bid_type=bid_type,\n            engine=engine,\n        )\n    connection.commit()\n\n    # Close the connection\n    connection.close()\n\n    # Convert start_date and end_date to datetime\n    start_date = extract_datetime_from_date_parameter(start_date)\n    end_date = extract_datetime_from_date_parameter(end_date)\n\n    # Create a connection to the database\n    engine = sqlalchemy.create_engine(database_uri)\n    batches_str = \", \".join([str(batch) for batch in batches])\n\n    # Write the SQL query\n    query = f\"\"\"\n    SELECT *\n    FROM batched_input_data\n    WHERE `Fecha UTC` >= '{start_date}'\n    AND `Fecha UTC` <= '{end_date}'\n    AND `Tipo Oferta` = '{bid_type}'\n    AND `Energía Compra/Venta Acumulada` IN ({batches_str})\n    AND `Energía Compra/Venta Acumulada` BETWEEN {min_energy_cumsum} AND {max_energy_cumsum}\n    \"\"\"\n\n    batched_input_data = pd.read_sql(\n        query,\n        engine,\n    )\n\n    return batches, batched_input_data\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\data_transformations\\create_batched_input_data_table.py",
+  "parameters": {
+    "start_date": "2024-01-20",
+    "end_date": "2024-01-31",
+    "bid_type": "C",
+    "batch_size": 100,
+    "min_energy_cumsum": 500,
+    "max_energy_cumsum": 50000,
+    "database_config": {
+      "database": "energy-market-forecast",
+      "user": "root",
+      "password": "3loy3loy",
+      "host": "127.0.0.1"
+    }
+  },
+  "run_command": "kedro run --to-nodes=create_batched_input_data_table",
+  "inputs": [
+    "featured_merged_input_data",
+    "params:start_date",
+    "params:end_date",
+    "params:bid_type",
+    "params:batch_size",
+    "params:min_energy_cumsum",
+    "params:max_energy_cumsum",
+    "params:database_config"
+  ],
+  "outputs": [
+    "batches",
+    "batched_input_data"
+  ]
+}

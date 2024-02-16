@@ -1,0 +1,21 @@
+{
+  "code": "def train_xgboost_monotonic(\n    bid_type,\n    X_train_merged_input_data_preprocessed,\n    y_train_merged_input_data,\n    column_transformer_merged_input_data,\n    hyper_parameters_optimizer,\n):\n    monotonic_value = -1 if bid_type == \"C\" else 1\n    monotonic_condition = tuple(\n        0 if column != ENERGY_CUMSUM_PIPELINE_NAME else monotonic_value\n        for column in column_transformer_merged_input_data.get_feature_names_out()\n    )\n\n    xgbm = XGBRegressor(\n        objective=\"reg:squarederror\",\n        seed=2022,\n        monotone_constraints=monotonic_condition,\n    )\n\n    ModelSelector = MODEL_SELECTORS[hyper_parameters_optimizer]\n    model_selector = ModelSelector(xgbm, **HYPER_PARAMETER_OPTIMIZER_ARGS)\n    model_search = model_selector.fit(\n        X_train_merged_input_data_preprocessed, y_train_merged_input_data\n    )\n\n    logger.info(f\"Best parameters found: {model_search.best_params_}\")\n\n    best_estimator = model_search.best_estimator_\n    y_train_merged_input_data_predicted = best_estimator.predict(\n        X_train_merged_input_data_preprocessed\n    )\n\n    metrics = calculate_metrics(\n        y_train_merged_input_data, y_train_merged_input_data_predicted\n    )\n\n    return best_estimator, y_train_merged_input_data_predicted, metrics\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_monotonic\\train_xgboost_monotonic.py",
+  "parameters": {
+    "bid_type": "C",
+    "hyper_parameters_optimizer": "HalvingGridSearchCV"
+  },
+  "run_command": "kedro run --to-nodes=xgboost_monotonic.train_xgboost_monotonic",
+  "inputs": [
+    "params:bid_type",
+    "X_train_merged_input_data_preprocessed",
+    "y_train_merged_input_data",
+    "column_transformer_merged_input_data",
+    "params:hyper_parameters_optimizer"
+  ],
+  "outputs": [
+    "xgboost_monotonic.trained_xgboost_monotonic",
+    "xgboost_monotonic.y_train_merged_input_data_predicted",
+    "xgboost_monotonic.train_dataset_metrics"
+  ]
+}

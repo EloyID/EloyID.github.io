@@ -1,0 +1,10 @@
+{
+  "type": "pandas.parquet_dataset.ParquetDataset",
+  "filepath": "C:/Users/einsunza/OneDrive - Universidad Pontificia Comillas/Escritorio/work/energy-market-forecast/data/09_database_extractions/raw_pbc_extract.parquet",
+  "plot": null,
+  "image": null,
+  "tracking_data": null,
+  "run_command": "kedro run --to-outputs=raw_pbc_extract",
+  "preview": null,
+  "stats": null
+}

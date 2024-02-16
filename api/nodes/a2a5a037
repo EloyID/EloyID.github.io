@@ -1,0 +1,20 @@
+{
+  "code": "def train_price_pca_target_regression(\n    X_train_batched_price_pca_as_target_dataset,\n    X_train_batched_price_pca_as_target_dataset_preprocessed,\n    y_train_batched_price_pca_as_target_dataset,\n    fitted_price_fpca,\n    X_train_price_pca_dataset,\n    batched_price_input_data,\n):\n\n    regressor = LinearRegression()\n\n    regressor.fit(\n        X_train_batched_price_pca_as_target_dataset_preprocessed,\n        y_train_batched_price_pca_as_target_dataset,\n    )\n\n    y_train_dataset_predicted = regressor.predict(\n        X_train_batched_price_pca_as_target_dataset_preprocessed\n    )\n\n    # energias predichas\n    y_train_batched_price_pca_as_target_dataset_predicted_reconstructed = (\n        reconstruct_data_from_pcas(\n            fitted_price_fpca,\n            X_train_batched_price_pca_as_target_dataset,\n            y_train_dataset_predicted,\n            X_train_price_pca_dataset,\n            X_column=\"Precio Compra/Venta\",\n            y_column=\"Energía Compra/Venta Acumulada\",\n        )\n    )\n\n    train_price_inferred = infer_price_from_energy(\n        batched_price_input_data,\n        batched_price_input_data[\"Energía Compra/Venta Acumulada\"],\n        y_train_batched_price_pca_as_target_dataset_predicted_reconstructed,\n    )\n    metrics = calculate_metrics(\n        batched_price_input_data[\"Energía Compra/Venta Acumulada\"], train_price_inferred\n    )\n\n    return (\n        regressor,\n        y_train_dataset_predicted,\n        y_train_batched_price_pca_as_target_dataset_predicted_reconstructed,\n        metrics,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_price_pca_target_regression\\train_price_pca_target_regression.py",
+  "parameters": {},
+  "run_command": "kedro run --to-nodes=price_pca_target_regression.train_price_pca_target_regression",
+  "inputs": [
+    "X_train_batched_price_pca_as_target_dataset",
+    "X_train_batched_price_pca_as_target_dataset_preprocessed",
+    "y_train_batched_price_pca_as_target_dataset",
+    "fitted_price_fpca",
+    "X_train_price_pca_dataset",
+    "batched_price_raw_train_dataset"
+  ],
+  "outputs": [
+    "price_pca_target_regression.trained_price_pca_target_regression",
+    "price_pca_target_regression.y_train_price_pca_target_regression_dataset_predicted",
+    "price_pca_target_regression.y_train_price_pca_target_regression_dataset_predicted_reconstructed",
+    "price_pca_target_regression.train_dataset_metrics"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "code": "def build_pca_dataset(\n    train_merged_input_data,\n    test_merged_input_data,\n    batched_input_data,\n    fitted_fpca,\n    batches,\n    min_energy_cumsum,\n    max_energy_cumsum,\n    lags,\n):\n    functional_principal_components = get_fpca_values(\n        fitted_fpca=fitted_fpca,\n        batches=batches,\n        batched_data=batched_input_data,\n        pivot_values=\"Precio Compra/Venta\",\n        pivot_columns=\"Energía Compra/Venta Acumulada\",\n    )\n\n    train_dataset = merge_lagged_values(\n        lags,\n        train_merged_input_data,\n        functional_principal_components,\n        \"Fecha UTC\",\n        \"Fecha UTC\",\n    )\n\n    test_dataset = merge_lagged_values(\n        lags,\n        test_merged_input_data,\n        functional_principal_components,\n        \"Fecha UTC\",\n        \"Fecha UTC\",\n    )\n\n    test_dataset = test_dataset[\n        get_eval_mask(\n            test_dataset,\n            min_energy_cumsum,\n            max_energy_cumsum,\n        )\n    ]\n\n    X_train_dataset = train_dataset.drop(\"Precio Compra/Venta\", axis=1)\n    y_train_dataset = train_dataset[\"Precio Compra/Venta\"]\n\n    X_test_dataset = test_dataset.drop(\"Precio Compra/Venta\", axis=1)\n    y_test_dataset = test_dataset[\"Precio Compra/Venta\"]\n\n    return X_train_dataset, y_train_dataset, X_test_dataset, y_test_dataset\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_monotonic_pca\\build_pca_dataset.py",
+  "parameters": {
+    "min_energy_cumsum": 500,
+    "max_energy_cumsum": 50000,
+    "lags": [
+      {
+        "d": [
+          1
+        ]
+      }
+    ]
+  },
+  "run_command": "kedro run --to-nodes=build_pca_dataset",
+  "inputs": [
+    "train_merged_input_data",
+    "test_merged_input_data",
+    "batched_input_data",
+    "fitted_fpca",
+    "batches",
+    "params:min_energy_cumsum",
+    "params:max_energy_cumsum",
+    "params:lags"
+  ],
+  "outputs": [
+    "X_train_dataset",
+    "y_train_dataset",
+    "X_test_dataset",
+    "y_test_dataset"
+  ]
+}

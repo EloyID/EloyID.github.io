@@ -1,0 +1,19 @@
+{
+  "code": "def test_pca_target_regression(\n    regressor,\n    X_test_dataset_preprocessed,\n    fitted_fpca,\n    X_test_batched_energy_pca_as_target_dataset,\n    X_test_dataset,\n    y_test_dataset,\n):\n    y_test_dataset_predicted = regressor.predict(X_test_dataset_preprocessed)\n\n    y_test_dataset_predicted_reconstructed = reconstruct_data_from_pcas(\n        fitted_fpca,\n        X_test_batched_energy_pca_as_target_dataset,\n        y_test_dataset_predicted,\n        X_test_dataset,\n    )\n\n    metrics = calculate_metrics(y_test_dataset, y_test_dataset_predicted_reconstructed)\n\n    return y_test_dataset_predicted, y_test_dataset_predicted_reconstructed, metrics\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_pca_target_regression\\test_pca_target_regression.py",
+  "parameters": {},
+  "run_command": "kedro run --to-nodes=pca_target_regression.test_pca_target_regression",
+  "inputs": [
+    "pca_target_regression.trained_pca_target_regression",
+    "X_test_batched_energy_pca_as_target_dataset_preprocessed",
+    "fitted_fpca",
+    "X_test_batched_energy_pca_as_target_dataset",
+    "X_test_dataset",
+    "y_test_dataset"
+  ],
+  "outputs": [
+    "pca_target_regression.y_test_pca_target_regression_dataset_predicted",
+    "pca_target_regression.y_test_pca_target_regression_dataset_predicted_reconstructed",
+    "pca_target_regression.test_dataset_metrics"
+  ]
+}

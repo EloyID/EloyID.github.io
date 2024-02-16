@@ -1,0 +1,16 @@
+{
+  "type": "tracking.metrics_dataset.MetricsDataset",
+  "filepath": "C:/Users/einsunza/OneDrive - Universidad Pontificia Comillas/Escritorio/work/energy-market-forecast/data/10_tracking/xgboost_pca_monotonic_train_dataset_metrics.json",
+  "plot": null,
+  "image": null,
+  "tracking_data": {
+    "mae": 36.33069256263123,
+    "mse": 3021.484588858044,
+    "me": 665.4366455078125,
+    "r2": 0.8887705087126744,
+    "mape": 3783449216121399.5
+  },
+  "run_command": "kedro run --to-outputs=xgboost_pca_monotonic_train_dataset_metrics",
+  "preview": null,
+  "stats": null
+}

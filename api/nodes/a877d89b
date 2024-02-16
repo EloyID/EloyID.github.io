@@ -1,0 +1,22 @@
+{
+  "code": "def xgboost_unconstrained_reporting(\n    X_train,\n    y_train,\n    y_train_pred,\n    X_test,\n    y_test,\n    y_test_pred,\n    min_energy_cumsum_eval,\n    max_energy_cumsum_eval,\n):\n    return xgboost_monotonic_reporting(\n        \"XGBoost Unconstrained\",\n        X_train,\n        y_train,\n        y_train_pred,\n        X_test,\n        y_test,\n        y_test_pred,\n        min_energy_cumsum_eval,\n        max_energy_cumsum_eval,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_unconstrained\\xgboost_unconstrained_reporting.py",
+  "parameters": {
+    "min_energy_cumsum_eval": 5000,
+    "max_energy_cumsum_eval": 30000
+  },
+  "run_command": "kedro run --to-nodes=xgboost_unconstrained.xgboost_unconstrained_reporting",
+  "inputs": [
+    "X_train_merged_input_data",
+    "y_train_merged_input_data",
+    "xgboost_unconstrained.y_train_xgboost_unconstrained_predicted",
+    "X_test_merged_input_data",
+    "y_test_merged_input_data",
+    "xgboost_unconstrained.y_test_xgboost_unconstrained_predicted",
+    "params:min_energy_cumsum_eval",
+    "params:max_energy_cumsum_eval"
+  ],
+  "outputs": [
+    "xgboost_unconstrained_reporting_plots"
+  ]
+}

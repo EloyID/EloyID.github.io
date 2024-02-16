@@ -1,0 +1,20 @@
+{
+  "code": "def split_price_pca_datasets(\n    batched_price_input_data,\n    train_dates,\n    test_dates,\n    min_price,\n    max_price,\n):\n    batched_price_raw_train_dataset = batched_price_input_data[\n        batched_price_input_data[\"Fecha UTC\"].isin(train_dates)\n    ]\n    batched_price_raw_test_dataset = batched_price_input_data[\n        batched_price_input_data[\"Fecha UTC\"].isin(test_dates)\n    ]\n    batched_price_raw_test_dataset = batched_price_raw_test_dataset[\n        get_eval_mask(\n            batched_price_raw_test_dataset,\n            min_price,\n            max_price,\n            'Precio Compra/Venta'\n        )\n    ]\n\n    return (\n        batched_price_raw_train_dataset,\n        batched_price_raw_test_dataset,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_monotonic_price_pca\\split_price_pca_datasets.py",
+  "parameters": {
+    "min_price": 0,
+    "max_price": 200
+  },
+  "run_command": "kedro run --to-nodes=split_price_pca_datasets",
+  "inputs": [
+    "batched_price_input_data",
+    "train_dates",
+    "test_dates",
+    "params:min_price",
+    "params:max_price"
+  ],
+  "outputs": [
+    "batched_price_raw_train_dataset",
+    "batched_price_raw_test_dataset"
+  ]
+}

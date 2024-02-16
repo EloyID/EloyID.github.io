@@ -1,0 +1,5 @@
+{
+  "parameters": {
+    "price_batch_size": 5
+  }
+}

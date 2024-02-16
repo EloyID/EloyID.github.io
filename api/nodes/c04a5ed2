@@ -1,0 +1,10 @@
+{
+  "type": "pickle.pickle_dataset.PickleDataset",
+  "filepath": "C:/Users/einsunza/OneDrive - Universidad Pontificia Comillas/Escritorio/work/energy-market-forecast/data/06_models/fitted_fpca.pkl",
+  "plot": null,
+  "image": null,
+  "tracking_data": null,
+  "run_command": "kedro run --to-outputs=fitted_fpca",
+  "preview": null,
+  "stats": null
+}

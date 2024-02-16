@@ -1,0 +1,23 @@
+{
+  "code": "def preprocess_batched_energy_pca_as_target_dataset(\n    X_train_batched_energy_pca_as_target_dataset,\n    X_test_batched_energy_pca_as_target_dataset,\n    optional_explanatory_variables,\n):\n    X_train_dataset_filtered = X_train_batched_energy_pca_as_target_dataset.drop(\n        [\"Fecha UTC\"], axis=1\n    )\n\n    optional_numerical_columns, optional_categorical_columns = (\n        get_optional_explanatory_variables(optional_explanatory_variables)\n    )\n\n    numerical_columns = optional_numerical_columns\n    categorical_columns = optional_categorical_columns\n\n    # create a pipeline for the categorical columns and the numerical columns\n    categorical_pipeline = Pipeline(\n        [\n            (\"one_hot_encoder\", OneHotEncoder(handle_unknown=\"ignore\")),\n        ]\n    )\n    numerical_pipeline = Pipeline(\n        [\n            (\"scaler\", StandardScaler()),\n        ]\n    )\n\n    # create a column transformer for the categorical and numerical pipelines\n    column_transformer = ColumnTransformer(\n        [\n            (\"categorical_pipeline\", categorical_pipeline, categorical_columns),\n            (\"numerical_pipeline\", numerical_pipeline, numerical_columns),\n        ]\n    )\n\n    X_train_batched_energy_pca_as_target_dataset_preprocessed = (\n        column_transformer.fit_transform(X_train_dataset_filtered)\n    )\n\n    X_test_batched_energy_pca_as_target_dataset = column_transformer.transform(\n        X_test_batched_energy_pca_as_target_dataset.drop([\"Fecha UTC\"], axis=1)\n    )\n\n    return (\n        X_train_batched_energy_pca_as_target_dataset_preprocessed,\n        X_test_batched_energy_pca_as_target_dataset,\n        column_transformer,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_pca_energy_as_target\\preprocess_batched_energy_pca_as_target_dataset.py",
+  "parameters": {
+    "optional_explanatory_variables": [
+      "Hora",
+      "Día de la semana",
+      "Predicción eólica",
+      "Predicción demanda"
+    ]
+  },
+  "run_command": "kedro run --to-nodes=preprocess_batched_energy_pca_as_target_dataset",
+  "inputs": [
+    "X_train_batched_energy_pca_as_target_dataset",
+    "X_test_batched_energy_pca_as_target_dataset",
+    "params:optional_explanatory_variables"
+  ],
+  "outputs": [
+    "X_train_batched_energy_pca_as_target_dataset_preprocessed",
+    "X_test_batched_energy_pca_as_target_dataset_preprocessed",
+    "column_transformer_batched_energy_pca_as_target_dataset"
+  ]
+}

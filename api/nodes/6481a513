@@ -1,0 +1,18 @@
+{
+  "code": "def train_xgboost_unconstrained(\n    X_train_merged_input_data_preprocessed,\n    y_train_merged_input_data,\n    hyper_parameters_optimizer,\n):\n\n    xgbm = XGBRegressor(\n        objective=\"reg:squarederror\",\n        seed=2022,\n    )\n\n    ModelSelector = MODEL_SELECTORS[hyper_parameters_optimizer]\n    model_selector = ModelSelector(xgbm, **HYPER_PARAMETER_OPTIMIZER_ARGS)\n    model_search = model_selector.fit(\n        X_train_merged_input_data_preprocessed, y_train_merged_input_data\n    )\n\n    logger.info(f\"Best parameters found: {model_search.best_params_}\")\n\n    best_estimator = model_search.best_estimator_\n    y_train_merged_input_data_predicted = best_estimator.predict(\n        X_train_merged_input_data_preprocessed\n    )\n\n    metrics = calculate_metrics(\n        y_train_merged_input_data,\n        y_train_merged_input_data_predicted,\n    )\n\n    return best_estimator, y_train_merged_input_data_predicted, metrics\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_unconstrained\\train_xgboost_unconstrained.py",
+  "parameters": {
+    "hyper_parameters_optimizer": "HalvingGridSearchCV"
+  },
+  "run_command": "kedro run --to-nodes=xgboost_unconstrained.train_xgboost_unconstrained",
+  "inputs": [
+    "X_train_merged_input_data_preprocessed",
+    "y_train_merged_input_data",
+    "params:hyper_parameters_optimizer"
+  ],
+  "outputs": [
+    "xgboost_unconstrained.trained_xgboost_unconstrained",
+    "xgboost_unconstrained.y_train_xgboost_unconstrained_predicted",
+    "xgboost_unconstrained.train_dataset_metrics#outputs"
+  ]
+}

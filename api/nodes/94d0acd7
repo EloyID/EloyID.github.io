@@ -1,0 +1,12 @@
+{
+  "code": "def price_pca_components_reporting(fitted_price_fpca):\n    fitted_price_fpca.components_.plot()\n\n    plt.title(\"Fitted price batched FPCA components\")\n    plt.legend([f\"Component {n}\" for n in range(1, N_PCA_COMPONENTS + 1)])\n\n    return plt\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\reporting\\price_pca_components_reporting.py",
+  "parameters": {},
+  "run_command": "kedro run --to-nodes=price_pca_components_reporting",
+  "inputs": [
+    "fitted_price_fpca"
+  ],
+  "outputs": [
+    "price_pca_components_reporting_plot"
+  ]
+}

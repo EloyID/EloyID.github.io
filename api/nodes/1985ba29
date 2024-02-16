@@ -1,0 +1,10 @@
+{
+  "type": "pickle.pickle_dataset.PickleDataset",
+  "filepath": "C:/Users/einsunza/OneDrive - Universidad Pontificia Comillas/Escritorio/work/energy-market-forecast/data/07_model_output/y_test_price_pca_dataset_predicted.pkl",
+  "plot": null,
+  "image": null,
+  "tracking_data": null,
+  "run_command": "kedro run --to-outputs=y_test_price_pca_dataset_predicted",
+  "preview": null,
+  "stats": null
+}

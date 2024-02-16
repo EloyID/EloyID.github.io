@@ -1,0 +1,44 @@
+{
+  "type": "tracking.json_dataset.JSONDataset",
+  "filepath": "C:/Users/einsunza/OneDrive - Universidad Pontificia Comillas/Escritorio/work/energy-market-forecast/data/10_tracking/params_reporting.json",
+  "plot": null,
+  "image": null,
+  "tracking_data": {
+    "start_date": "2024-01-20",
+    "end_date": "2024-01-31",
+    "batch_size": 100,
+    "price_batch_size": 5,
+    "bid_type": "C",
+    "min_energy_cumsum": 500,
+    "max_energy_cumsum": 50000,
+    "min_energy_cumsum_eval": 5000,
+    "max_energy_cumsum_eval": 30000,
+    "min_price": 0,
+    "max_price": 200,
+    "min_price_eval": 0,
+    "max_price_eval": 200,
+    "database_config": {
+      "database": "energy-market-forecast",
+      "user": "root",
+      "password": "3loy3loy",
+      "host": "127.0.0.1"
+    },
+    "optional_explanatory_variables": [
+      "Hora",
+      "Día de la semana",
+      "Predicción eólica",
+      "Predicción demanda"
+    ],
+    "lags": [
+      {
+        "d": [
+          1
+        ]
+      }
+    ],
+    "hyper_parameters_optimizer": "HalvingGridSearchCV"
+  },
+  "run_command": "kedro run --to-outputs=params_reporting",
+  "preview": null,
+  "stats": null
+}

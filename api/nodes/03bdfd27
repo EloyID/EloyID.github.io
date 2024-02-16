@@ -1,0 +1,20 @@
+{
+  "code": "def split_pca_datasets(\n    batched_input_data,\n    train_dates,\n    test_dates,\n    min_energy_cumsum,\n    max_energy_cumsum,\n):\n    batched_raw_train_dataset = batched_input_data[\n        batched_input_data[\"Fecha UTC\"].isin(train_dates)\n    ]\n    batched_raw_test_dataset = batched_input_data[\n        batched_input_data[\"Fecha UTC\"].isin(test_dates)\n    ]\n    batched_raw_test_dataset = batched_raw_test_dataset[\n        get_eval_mask(\n            batched_raw_test_dataset,\n            min_energy_cumsum,\n            max_energy_cumsum,\n        )\n    ]\n\n    return (\n        batched_raw_train_dataset,\n        batched_raw_test_dataset,\n    )\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_monotonic_pca\\split_pca_datasets.py",
+  "parameters": {
+    "min_energy_cumsum": 500,
+    "max_energy_cumsum": 50000
+  },
+  "run_command": "kedro run --to-nodes=split_pca_datasets",
+  "inputs": [
+    "batched_input_data",
+    "train_dates",
+    "test_dates",
+    "params:min_energy_cumsum",
+    "params:max_energy_cumsum"
+  ],
+  "outputs": [
+    "batched_raw_train_dataset",
+    "batched_raw_test_dataset"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "parameters": {
+    "min_energy_cumsum_eval": 5000
+  }
+}

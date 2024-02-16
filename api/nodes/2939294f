@@ -1,0 +1,22 @@
+{
+  "code": "def train_xgboost_price_pca_monotonic(\n    bid_type,\n    X_train_price_pca_dataset,\n    X_train_price_pca_dataset_preprocessed,\n    y_train_price_pca_dataset,\n    column_transformer_price_pca_dataset,\n    hyper_parameters_optimizer,\n):\n    monotonic_value = -1 if bid_type == \"C\" else 1\n    monotonic_condition = tuple(\n        0 if column != PRICE_PIPELINE_NAME else monotonic_value\n        for column in column_transformer_price_pca_dataset.get_feature_names_out()\n    )\n\n    xgbm = XGBRegressor(\n        objective=\"reg:squarederror\",\n        seed=2022,\n        monotone_constraints=monotonic_condition,\n    )\n\n    ModelSelector = MODEL_SELECTORS[hyper_parameters_optimizer]\n    model_selector = ModelSelector(xgbm, **HYPER_PARAMETER_OPTIMIZER_ARGS)\n    model_search = model_selector.fit(\n        X_train_price_pca_dataset_preprocessed, y_train_price_pca_dataset\n    )\n\n    logger.info(f\"Best parameters found: {model_search.best_params_}\")\n\n    best_estimator = model_search.best_estimator_\n    y_train_price_pca_dataset_predicted = best_estimator.predict(\n        X_train_price_pca_dataset_preprocessed\n    )\n\n    train_price_inferred = infer_price_from_energy(\n        X_train_price_pca_dataset,\n        y_train_price_pca_dataset,\n        y_train_price_pca_dataset_predicted,\n    )\n    metrics = calculate_metrics(y_train_price_pca_dataset, train_price_inferred)\n\n    return best_estimator, y_train_price_pca_dataset_predicted, metrics\n",
+  "filepath": "energy-market-forecast\\src\\energy_demand\\nodes\\model_monotonic_price_pca\\train_xgboost_price_pca_monotonic.py",
+  "parameters": {
+    "bid_type": "C",
+    "hyper_parameters_optimizer": "HalvingGridSearchCV"
+  },
+  "run_command": "kedro run --to-nodes=train_xgboost_price_pca_monotonic",
+  "inputs": [
+    "params:bid_type",
+    "X_train_price_pca_dataset",
+    "X_train_price_pca_dataset_preprocessed",
+    "y_train_price_pca_dataset",
+    "column_transformer_price_pca_dataset",
+    "params:hyper_parameters_optimizer"
+  ],
+  "outputs": [
+    "trained_xgboost_price_pca_monotonic",
+    "y_train_price_pca_dataset_predicted",
+    "xgboost_price_pca_monotonic_train_dataset_metrics"
+  ]
+}

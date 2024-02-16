@@ -1,0 +1,16 @@
+{
+  "type": "tracking.metrics_dataset.MetricsDataset",
+  "filepath": "C:/Users/einsunza/OneDrive - Universidad Pontificia Comillas/Escritorio/work/energy-market-forecast/data/10_tracking/pca_target_regression.train_dataset_metrics.json",
+  "plot": null,
+  "image": null,
+  "tracking_data": {
+    "mae": 40.307222188878384,
+    "mse": 4025.2937104511166,
+    "me": 779.5509448675041,
+    "r2": 0.8518174233465916,
+    "mape": 3600139480289676.0
+  },
+  "run_command": "kedro run --to-outputs=pca_target_regression.train_dataset_metrics",
+  "preview": null,
+  "stats": null
+}
